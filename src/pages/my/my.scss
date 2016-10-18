@@ -1,0 +1,30 @@
+.header{
+  padding: 10px;
+  background-color: $headbar;
+}
+.subheader{
+  background: $subheadbar;
+}
+.toolbar-background-ios {
+  border-top-width: 0;
+  border-bottom-width: 0;
+}
+.child{
+  display: inline-block;
+}
+.child:last-of-type{
+  float: right;
+  margin-right: 20px;
+}
+.item{
+  display: inline-flex;
+  width: 100%;
+  background-color: white;
+}
+.left{
+  flex-grow: 8;
+  justify-content: space-between;
+}
+.right{
+  flex-grow: 1;
+}

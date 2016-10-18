@@ -1,0 +1,26 @@
+<ion-header class="header">
+  <ion-segment [(ngModel)]="sort">
+    <ion-segment-button value="个人信息">
+      个人信息
+    </ion-segment-button>
+    <ion-segment-button value="车辆信息">
+      车辆信息
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content style="background-color: #f7f7f7">
+  <ion-toolbar class="subheader">
+    <ion-icon name ="ios-megaphone-outline"></ion-icon>
+    <label>{{TotalMessage}}</label>
+  </ion-toolbar>
+  <h2>{{ sort }}</h2>
+  <show-message></show-message>
+  <div style="width: 100%">
+    <div style="float: right">{{total}}</div>
+    <div style="float: right">余额总计:</div>
+    </div>
+  <div style="margin-top: 15px">
+    <button ion-button color="danger">申请提款</button>
+  </div>
+</ion-content>
