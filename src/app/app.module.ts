@@ -2,17 +2,18 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { OtherPage } from '../pages/other/other';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import  { myPage } from  '../pages/my/my'
 import  { message} from  '../pages/my/message'
+import  { Screen } from  '../pages/get_screen_info';
 
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
+    OtherPage,
     HomePage,
     TabsPage,
     myPage,
@@ -26,11 +27,11 @@ import  { message} from  '../pages/my/message'
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
+    OtherPage,
     HomePage,
     TabsPage,
     myPage
   ],
-  providers: []
+  providers: [ Screen ]
 })
 export class AppModule {}

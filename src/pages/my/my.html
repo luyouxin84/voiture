@@ -14,13 +14,12 @@
     <ion-icon name ="ios-megaphone-outline"></ion-icon>
     <label>{{TotalMessage}}</label>
   </ion-toolbar>
-  <h2>{{ sort }}</h2>
-  <show-message></show-message>
-  <div style="width: 100%">
-    <div style="float: right">{{total}}</div>
+  <show-message *ngIf="myBase" [heigh]="win.hei"></show-message>
+  <div style="width: 100%" *ngIf="myBase">
+    <div style="float: right;color: red">{{total}}</div>
     <div style="float: right">余额总计:</div>
     </div>
-  <div style="margin-top: 15px">
-    <button ion-button color="danger">申请提款</button>
+  <div style="margin-top: 15px;" padding-horizontal *ngIf="myBase">
+    <button ion-button color="danger" round block >申请提款</button>
   </div>
 </ion-content>

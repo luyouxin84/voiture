@@ -4,6 +4,7 @@
 }
 .subheader{
   background: $subheadbar;
+  height: 6%;
 }
 .toolbar-background-ios {
   border-top-width: 0;
@@ -11,6 +12,7 @@
 }
 .child{
   display: inline-block;
+  float:left;
 }
 .child:last-of-type{
   float: right;
@@ -19,12 +21,24 @@
 .item{
   display: inline-flex;
   width: 100%;
+  height: 13.2%;
   background-color: white;
 }
 .left{
-  flex-grow: 8;
+  flex-grow: 9;
   justify-content: space-between;
+  display: flex;
+  align-content: space-between;
 }
 .right{
-  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ion-col{
+  padding: 0;
+}
+.full{
+  width: 100%;
+  height: 100%;
 }
