@@ -1,24 +1,25 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
+import { NotePage } from '../pages/note/note';
 import { OtherPage } from '../pages/other/other';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import  { myPage } from  '../pages/my/my'
 import  { message} from  '../pages/my/message'
 import  { Screen } from  '../pages/get_screen_info';
+import { detaildate } from '../pages/note/detaildate';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    NotePage,
     OtherPage,
     HomePage,
     TabsPage,
     myPage,
-    message
-
+    message,
+    detaildate
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -26,7 +27,7 @@ import  { Screen } from  '../pages/get_screen_info';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    NotePage,
     OtherPage,
     HomePage,
     TabsPage,

@@ -20,6 +20,6 @@
     <div style="float: right">余额总计:</div>
     </div>
   <div style="margin-top: 15px;" padding-horizontal *ngIf="myBase">
-    <button ion-button color="danger" round block >申请提款</button>
+    <button ion-button color="danger" round block (click)="change()">申请提款</button>
   </div>
 </ion-content>

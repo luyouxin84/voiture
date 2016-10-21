@@ -27,5 +27,8 @@ export class myPage {
     this.win = new screen_info(screeninfo.getscreen().wid,this.screeninfo.getscreen().hei);
     console.log( this.win.hei);
     }
-
+  change(){
+    this.myBase = !this.myBase;
+    console.log(this.myBase)
+  }
 }

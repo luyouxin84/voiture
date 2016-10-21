@@ -1,29 +1,9 @@
-<div class="container">
-  <!--<div class="item" *ngFor="let item of list" [ngStyle]="{'height': myBaseInput}">-->
-    <!--<div class="left">-->
-      <!--<div class="left-top" style="align-self: flex-start">{{item.time}}</div>-->
-      <!--<div class="child" style="align-self: flex-end">{{item.money}}</div>-->
-      <!--<div class="child" style="align-self: flex-end">{{item.restmoney}}</div>-->
-    <!--</div>-->
-        <!--<div class="right">-->
-      <!--<ion-icon name="ios-arrow-forward" ></ion-icon>-->
-    <!--</div>-->
-
-    <div class="item" *ngFor="let item of list" [ngStyle]="{'height': myBaseInput}">
-      <ion-grid style="border-bottom: 1px solid #f6f6f6">
-        <ion-row>
-          <ion-col width-90 >
-            <ion-row class="full">{{item.time}}</ion-row>
-            <ion-row>
-              <ion-col width-50 class="full">{{item.money}}</ion-col>
-              <ion-col width-50 class="full" style="text-align: right">{{item.restmoney}}</ion-col>
-            </ion-row>
-          </ion-col>
-          <ion-col width-10 >
-            <ion-icon name="ios-arrow-forward" class="right full"></ion-icon>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-  <!--</div>-->
+<div class="container" >
+  <div>
+    <ion-item detail-push *ngFor="let item of list" style="border-bottom: 1px solid #f6f6f6">
+      <h2 padding-top padding-bottom>{{item.time}}</h2>
+      <label>{{item.money}}</label>
+      <div style="float: right;padding-right: 15%">{{item.restmoney}}</div>
+    </ion-item>
+  </div>
 </div>
