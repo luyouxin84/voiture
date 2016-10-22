@@ -1,17 +1,46 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>旅行专车</ion-title>
   </ion-navbar>
+  <ion-toolbar no-border  class="sub" color>
+    <ion-segment [(ngModel)]="switchFunction" color="danger" style="background-color: white">
+      <ion-segment-button value="camera">
+        接单中
+      </ion-segment-button>
+      <ion-segment-button value="bookmark">
+        已完成
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content style="background-color: #eeeeee;">
+ <div style="width: 90%;background-color:white;border-radius: 2%;margin-top: 10px;margin-left: 5%"
+      *ngFor="let item of joblist">
+    <div class="fullwidth" style="color: red;padding-left: 3%;font-size: 17px;
+      padding-top: 7px;padding-bottom:2px;border-bottom: 1px solid #e5e5e5">{{item.title}}</div>
+    <div style="display: inline-block">
+      <img src="img/home_location_green.png" width="7%" style="padding-top: 6px"/>
+      <span>{{item.begin}}</span>
+    </div>
+   <div style="display: inline-block">
+      <img src="img/home_locaton_red.png" width="7%" style="padding-top: 6px"/>
+      <span>{{item.end}}</span>
+    </div>
+   <ion-grid style="padding: 0">
+     <ion-row style="padding:3px">
+       <ion-col width-20> <img src="img/face.png"></ion-col>
+       <ion-col width-60 text-center padding-top="2px">
+            <span><img src="img/telephone.png" width="9%"></span>
+            <span style="font-size: 17px">{{item.telephone}}</span>
+            <div>{{item.time}}</div>
+       </ion-col>
+       <ion-col width-20> <img src="img/telephone_big.png"></ion-col>
+     </ion-row>
+     <ion-row style="height: 50px">
+       <ion-col width-50 text-center><span>估计费用：</span><span style="color: red" >{{item.price}}</span></ion-col>
+       <ion-col width-50 style="background-color: #97ce68;color: white" text-center>{{item.todo}}</ion-col>
+     </ion-row>
+   </ion-grid>
+ </div>
 </ion-content>
