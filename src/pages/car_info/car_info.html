@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>我的车辆</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: #eeeeee">
+  <form (ngSubmit)="logForm()">
+    <div class="img_container" style="display: flex;flex-direction: row;width: 100%;overflow-x:auto;
+    background-color: white" padding text-center>
+      <div style="width: 33%">
+        <img [src]="info.picture1" width="90%" alt="img/upload_photo.png">
+      </div>
+      <div style="width: 33%">
+        <img src="img/car_sample.png" width="90%" alt="img/upload_photo.png">
+      </div>
+      <div style="width: 33%">
+        <img src="img/car_sample.png" width="90%" alt="img/upload_photo.png">
+      </div>
+    </div>
+
+    <div class="select_item">
+      <ion-item >
+        <ion-label>车型</ion-label>
+        <ion-input type="text" [(ngModel)]="info.cartype_id" name="cartype_id" ></ion-input>
+      </ion-item>
+    </div>
+    <div class="select_item">
+      <ion-item >
+        <ion-label>车牌号</ion-label>
+        <ion-input type="text" [(ngModel)]="info.number" name="number"></ion-input>
+      </ion-item>
+    </div>
+    <div class="select_item" >
+      <ion-item>
+        <ion-label>颜色</ion-label>
+        <ion-select [(ngModel)]="info.color" name="color">
+          <ion-option value="黑色" selected="true">黑色</ion-option>
+          <ion-option value="白色">白色</ion-option>
+          <ion-option value="银色">银色</ion-option>
+          <ion-option value="红色">红色</ion-option>
+          <ion-option value="黄色">黄色</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div class="select_item" >
+      <ion-item>
+        <ion-label>初次登记日期 月/日/年</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="info.checktime" name="checktime"></ion-datetime>
+      </ion-item>
+    </div>
+    <div class="select_item" >
+      <ion-item>
+        <ion-label>车座</ion-label>
+        <ion-select [(ngModel)]="info.seat" name="seat">
+          <ion-option value="f" selected="true">7座</ion-option>
+          <ion-option value="m">5座</ion-option>
+          <ion-option value="m">9座</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div style="padding:8%">
+      <button ion-button color='danger' type="submit" block >保存</button>
+    </div>
+
+  </form>
+
+</ion-content>

@@ -9,6 +9,9 @@ import  { myPage } from  '../pages/my/my'
 import  { message} from  '../pages/my/message'
 import  { Screen } from  '../pages/get_screen_info';
 import { detaildate } from '../pages/note/detaildate';
+import {done_deal} from  '../pages/done_deal/done_deal';
+import {car_info} from "../pages/car_info/car_info";
+import {person_info} from "../pages/person_info/person_info";
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { detaildate } from '../pages/note/detaildate';
     TabsPage,
     myPage,
     message,
-    detaildate
+    detaildate,
+    done_deal,
+    car_info,
+    person_info,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -31,7 +37,10 @@ import { detaildate } from '../pages/note/detaildate';
     OtherPage,
     HomePage,
     TabsPage,
-    myPage
+    myPage,
+    done_deal,
+    car_info,
+    person_info,
   ],
   providers: [ Screen ]
 })

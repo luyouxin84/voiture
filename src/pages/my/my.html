@@ -1,9 +1,9 @@
 <ion-header class="header">
   <ion-segment [(ngModel)]="sort">
-    <ion-segment-button value="个人信息">
+    <ion-segment-button value="个人信息" (click)="load_person_info()">
       个人信息
-    </ion-segment-button>
-    <ion-segment-button value="车辆信息">
+    </ion-segment-button >
+    <ion-segment-button value="车辆信息" (click)="load_car_info()">
       车辆信息
     </ion-segment-button>
   </ion-segment>

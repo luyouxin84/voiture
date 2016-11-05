@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { screen_info } from  '../screen_info';
 import  {Screen } from  '../get_screen_info';
+import {person_info} from "../person_info/person_info";
+import {car_info} from "../car_info/car_info";
 
 @Component({
   selector: 'page-my',
@@ -30,5 +32,11 @@ export class myPage {
   change(){
     this.myBase = !this.myBase;
     console.log(this.myBase)
+  }
+  load_person_info(){
+    this.navCtrl.push( person_info );
+  }
+  load_car_info(){
+    this.navCtrl.push( car_info );
   }
 }
