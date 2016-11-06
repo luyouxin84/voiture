@@ -6,6 +6,40 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="background-color: #eeeeee">
+  <!--//头像部分-->
+  <div style="background-color: white;width: 100%">
+    <div style="position: relative" text-center padding>
+      <img src="img/face.png"/>
+      <img src="img/number.png" style="position: absolute;bottom: 0;left: 55%"/>
+    </div>
+    <div text-center>
+      <label>冯小刚</label>
+      <img src="img/number.png">
+    </div>
+  </div>
+
+  <div class="select_item" >
+    <ion-item>
+      <ion-label>性别</ion-label>
+      <ion-select [(ngModel)]="info.sex" name="sex">
+        <ion-option value="男" >男</ion-option>
+        <ion-option value="女">女</ion-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <div class="select_item">
+    <ion-item >
+      <ion-label>擅长语言</ion-label>
+      <ion-input type="text" [(ngModel)]="info.language" name="language" placeholder="请输入擅长语言"></ion-input>
+    </ion-item>
+  </div>
+  <div class="select_item">
+    <ion-item >
+      <ion-label>擅长语言</ion-label>
+      <ion-input type="text" [(ngModel)]="info.telephone" name="telephone" placeholder="请输入手机号码"></ion-input>
+    </ion-item>
+  </div>
 
 </ion-content>
+

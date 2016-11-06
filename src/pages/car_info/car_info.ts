@@ -21,7 +21,6 @@ export  class  car_info implements OnInit {
   }
 
   ngOnInit(): void {
-    let result:any;
     this.http.get('http://www.shengyoudengwang.com/Service/Car/addCar.html')
       .subscribe( res => {
         this.myDate = res.json();
@@ -38,6 +37,7 @@ export  class  car_info implements OnInit {
       })
   }
   logForm() {
+    //表达提交
     console.log(this.info)
   }
 }
