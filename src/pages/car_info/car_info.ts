@@ -28,16 +28,22 @@ export  class  car_info implements OnInit {
         this.info.id = this.myDate.result.Result.id;
         this.info.cartype_id = this.myDate.result.Result.cartype_id;
         this.info.driver_id = this.myDate.result.Result.driver_id;
-        this.info.picture1 = this.myDate.result.Result.picture1;
+        //图片地址只是测试，没有做具体的判断动作
+        this.info.picture1 =  this.myDate.result.Result.picture1;
         this.info.picture2 = this.myDate.result.Result.picture2;
         this.info.picture3 = this.myDate.result.Result.picture3;
         this.info.number = this.myDate.result.Result.number;
         this.info.color = this.myDate.result.Result.color;
         this.info.checktime = this.myDate.result.Result.checktime;
+        this.info.id = this.myDate.result.Result.id;
       })
   }
   logForm() {
     //表达提交
-    console.log(this.info)
+    console.log(this.info);
+    let i = JSON.stringify(this.info);
+    console.log(i);
+    this.http.post('http://www.shengyoudengwang.com/Service/Car/addDriver.html',i)
+      .subscribe( res => alert( res ));
   }
 }

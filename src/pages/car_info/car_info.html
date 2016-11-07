@@ -5,17 +5,17 @@
 </ion-header>
 
 <ion-content style="background-color: #eeeeee">
-  <form (ngSubmit)="logForm()">
+  <form #biaodan = "ngForm">
     <div class="img_container" style="display: flex;flex-direction: row;width: 100%;overflow-x:auto;
     background-color: white" padding text-center>
       <div style="width: 33%">
-        <img [src]="info.picture1" width="90%" alt="img/upload_photo.png">
+        <img [src]="'http://www.shengyoudengwang.com' + info.picture1" width="90%" alt="img/upload_photo.png">
       </div>
       <div style="width: 33%">
-        <img src="img/car_sample.png" width="90%" alt="img/upload_photo.png">
+        <img [src]="'http://www.shengyoudengwang.com' + info.picture2" width="90%" alt="img/upload_photo.png">
       </div>
       <div style="width: 33%">
-        <img src="img/car_sample.png" width="90%" alt="img/upload_photo.png">
+        <img [src]="'http://www.shengyoudengwang.com' + info.picture3" width="90%" alt="img/upload_photo.png">
       </div>
     </div>
 
@@ -60,7 +60,7 @@
       </ion-item>
     </div>
     <div style="padding:8%">
-      <button ion-button color='danger' type="submit" block >保存</button>
+      <button ion-button color='danger' (click)="logForm()" block >保存</button>
     </div>
   </form>
 
