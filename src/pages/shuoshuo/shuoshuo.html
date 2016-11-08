@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      其他
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar style="background-color: #f6f6f6;border-top-width: 1px;border-bottom-width:1px;border-color: #d2d2d2;
+  border-style:solid;border-left: none;border-right: none ">
+    <ion-grid>
+      <ion-row style="text-align: center">
+        <ion-col width-33 (click)="back()">全部</ion-col>
+        <ion-col width-33 (click)="gotoleave()">请假</ion-col>
+        <ion-col width-33 style="color: red">说说</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let item of list" >
+    <ion-item style="position: relative" >
+      <h2>{{item.time}}</h2>
+      <p style="position:absolute;top: 10px;right: 30px">
+        {{item.statue?item.statue:'未知'}}
+      </p>
+      <ion-item text-wrap style="border: none" style="border-bottom: 1px solid #f6f6f6">{{item.context}}</ion-item>
+    </ion-item>
+  </div>
+  <button ion-button color="danger" style="width: 80%;margin-left: 10%" (click)="writeleave()">写说说</button>
+
+
+
+</ion-content>

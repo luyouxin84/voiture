@@ -12,6 +12,10 @@ import { detaildate } from '../pages/note/detaildate';
 import {done_deal} from  '../pages/done_deal/done_deal';
 import {car_info} from "../pages/car_info/car_info";
 import {person_info} from "../pages/person_info/person_info";
+import { leave } from '../pages/leave/leave';
+import { shuoshuo } from '../pages/shuoshuo/shuoshuo';
+import { write_shuoshuo} from '../pages/write_shuoshuo/write_shuoshuo';
+import { write_leave } from '../pages/write_leave/write_leave';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,10 @@ import {person_info} from "../pages/person_info/person_info";
     done_deal,
     car_info,
     person_info,
+    leave,
+    shuoshuo,
+    write_shuoshuo,
+    write_leave,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -41,6 +49,10 @@ import {person_info} from "../pages/person_info/person_info";
     done_deal,
     car_info,
     person_info,
+    leave,
+    shuoshuo,
+    write_shuoshuo,
+    write_leave,
   ],
   providers: [ Screen ]
 })

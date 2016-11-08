@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>写说说</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: #f7f7f7">
+
+  <ion-grid style="width: 100%">
+    <ion-row>
+      <ion-col width-50>
+        <button ion-button color="grey" style="width: 90%;margin-left: 5%;background-color: #999999"
+                (click)="cancel()">取消</button>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button color="danger" style="width: 90%;margin-left: 5%;"
+                (click)="confirm()">保存</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

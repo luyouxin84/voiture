@@ -35,11 +35,7 @@ export  class  person_info implements OnInit{
     })
   }
   logForm(){
-    console.log(this.info);
-    // let i = JSON.stringify(this.info);
-    // console.log(i);
-    // const header = new Headers();
-    // header.append('Content-Type','application/json;charset=utf-8');
+    // console.log(this.info);
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
     //时间没有处理
@@ -57,7 +53,6 @@ export  class  person_info implements OnInit{
       'bankName='+ this.info.bankName + '&' +
       'id='+ this.info.id
       ;
-
     this.http.post('http://www.shengyoudengwang.com/Service/Car/addDriver.html',params,{headers:headers})
       .subscribe( res => console.log( res ));
   }
