@@ -1,10 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      订单详情
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-divider>
+      订单信息
+    </ion-item-divider>
+    <ion-item>
+      <div>
+        订单时间 :
+      </div>
+      <div>
+        订单编号 : {{id}}
+      </div>
+      <div>
+        <span><img src="img/home_location_green.png"  style="height: 13px;width: 8px"></span>
+        <span>qeqwewqewqewqewqeqweqe</span>
+      </div>
+      <div>
+        <span><img src="img/home_locaton_red.png" style="height: 13px;width: 8px"></span>
+        <span>qweqwewqewqeqw</span>
+      </div>
+      <div text-center style="margin-top: 3%">
+        <div style="color: #979797">
+          ----------------- 成功支付 -----------------
+        </div>
+        <div style="font-size: 27px;margin-top: 3%">
+          150.00元
+        </div>
+      </div>
+    </ion-item>
+    <ion-item-divider>
+      客户信息
+    </ion-item-divider>
+    <ion-grid style="padding: 0">
+      <ion-row style="padding:3px;height: 58px;margin-top: 2%;margin-bottom: 2%">
+        <ion-col width-20 text-center><img src="img/face.png" width="70%"></ion-col>
+        <ion-col width-60 >
+          <div style="height: 50%">
+            <span><img src="img/telephone.png" width="9%"></span>
+            <span style="font-size: 17px"></span>
+          </div>
+          <div style="color: #bdbdbd;height: 50%;font-size: 16px"></div>
+        </ion-col>
+        <ion-col width-20 text-center> <img src="img/telephone_big.png" width="70%"></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item-divider>
+      客户评价
+    </ion-item-divider>
+    <ion-item text-wrap style="border-bottom: none">
+      <div>
+        <span>会飞的鱼</span>
+        <span style="color: #f39800">
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star-half"></ion-icon>
+        </span>
+        <span>2016年11月9日11:22:19</span>
+      </div>
+      <div>
+        fwerwerewrwqerewrfewrfewrewr
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

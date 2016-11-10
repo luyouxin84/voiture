@@ -16,6 +16,7 @@ import { leave } from '../pages/leave/leave';
 import { shuoshuo } from '../pages/shuoshuo/shuoshuo';
 import { write_shuoshuo} from '../pages/write_shuoshuo/write_shuoshuo';
 import { write_leave } from '../pages/write_leave/write_leave';
+import { order_detail } from '../pages/order_detail/order_detail';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { write_leave } from '../pages/write_leave/write_leave';
     shuoshuo,
     write_shuoshuo,
     write_leave,
+    order_detail,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -53,6 +55,7 @@ import { write_leave } from '../pages/write_leave/write_leave';
     shuoshuo,
     write_shuoshuo,
     write_leave,
+    order_detail,
   ],
   providers: [ Screen ]
 })
