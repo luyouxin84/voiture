@@ -6,6 +6,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { done_deal } from '../done_deal/done_deal';
 import {relation_account} from "../relation_account/relation_account";
+import {CallNumber} from 'ionic-native';
 
 @Component({
   selector: 'page-home',
@@ -66,5 +67,11 @@ export class HomePage implements OnInit{
   }
   temp(){
     this.navCtrl.push(relation_account)
+  }
+  callNumber( number:string ){
+    //拨号组件电脑调试不能，错误正常
+    CallNumber.callNumber(number, true)
+      .then(() => console.log('Launched dialer!'))
+      .catch(() => console.log('Error launching dialer'));
   }
 }

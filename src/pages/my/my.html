@@ -15,11 +15,14 @@
     <label>{{TotalMessage}}</label>
   </ion-toolbar>
   <show-message *ngIf="myBase" [heigh]="win.hei"></show-message>
-  <div style="width: 100%" *ngIf="myBase">
+  <div style="width: 100%;font-size: 22px;font-weight: 600;padding-top: 10px" *ngIf="myBase">
     <div style="float: right;color: red">{{total}}</div>
     <div style="float: right">余额总计:</div>
     </div>
-  <div style="margin-top: 15px;" padding-horizontal *ngIf="myBase">
+  <div style="margin-top: 10%;" padding-horizontal >
     <button ion-button color="danger" round block (click)="change()">申请提款</button>
+  </div>
+  <div style="margin-top: 10%;" padding-horizontal >
+    <button ion-button color="primary" round block (click)="logout()">退出登录</button>
   </div>
 </ion-content>

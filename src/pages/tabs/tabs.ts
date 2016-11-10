@@ -18,8 +18,11 @@ export class TabsPage implements OnInit{
     if ( !localStorage.getItem('uid') ){
       this.tabshow = false;
       this.loginshow = true;
+    }else {
+      this.tabshow = true;
+      this.loginshow = false;
+      console.log('测试的用户id：'+ localStorage.getItem('uid'));
     }
-
     // this.navCTRL.push(relation_account);
   }
   // this tells the tabs component which Pages

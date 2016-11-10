@@ -18,6 +18,8 @@ import { write_shuoshuo} from '../pages/write_shuoshuo/write_shuoshuo';
 import { write_leave } from '../pages/write_leave/write_leave';
 import { order_detail } from '../pages/order_detail/order_detail';
 import {relation_account} from "../pages/relation_account/relation_account";
+import {demand_cash} from "../pages/demand_cash/demand_cash";
+import {note_detail} from "../pages/note_detail/note_detail";
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import {relation_account} from "../pages/relation_account/relation_account";
     write_leave,
     order_detail,
     relation_account,
+    demand_cash,
+    note_detail,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -60,6 +64,8 @@ import {relation_account} from "../pages/relation_account/relation_account";
     write_leave,
     order_detail,
     relation_account,
+    demand_cash,
+    note_detail,
   ],
   providers: [ Screen ]
 })

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      申请提款
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>提款金额</ion-label>
+    <ion-input type="number" placeholder="请输入提款金额" #amount></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>账号密码</ion-label>
+    <ion-input type="password" placeholder="请输入密码" #pass></ion-input>
+  </ion-item>
+  <div text-center>*所有输入框一定为单行输入</div>
+  <button ion-button color="danger" style="width: 80%;border-radius: 5px;margin-left: 10%" (click)="post(amount.value,
+  pass.value)">提交</button>
+</ion-content>

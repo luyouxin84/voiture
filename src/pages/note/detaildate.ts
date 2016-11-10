@@ -3,6 +3,9 @@
  */
 import {Component, Input} from '@angular/core';
 import { job } from  '../note/job';
+import {Http} from "@angular/http";
+import {NavController} from "ionic-angular";
+import {note_detail} from "../note_detail/note_detail";
 
 @Component({
   templateUrl:'detail.html',
@@ -10,7 +13,12 @@ import { job } from  '../note/job';
 })
 export class detaildate{
   @Input() todos:job [];
-  constructor() {
+  constructor(public http:Http,public navCTRL:NavController) {
 
+  }
+  gotodetail(){
+    this.navCTRL.push(note_detail,{
+      //some params
+    })
   }
 }
