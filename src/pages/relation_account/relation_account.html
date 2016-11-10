@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>关联账号</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid style="border-radius: 10px;border: 1px solid #c9c9c9;width: 86%;margin-left: 7%;margin-top: 40%;padding: 0">
+    <ion-row style="padding-bottom: 5%;padding-top: 5%">
+      <ion-col width-15 text-center>
+        <img src="img/iphone.png" style="height: 26px">
+      </ion-col>
+      <ion-col width-50 >
+        <input type="text" placeholder="请输入手机号码" style="border: none;font-size: 24px;width: 100%"
+               text-center maxlength="11" #id>
+      </ion-col>
+      <ion-col width-25 text-center>
+        <img src="img/check_code.png" style="width: 70%">
+      </ion-col>
+    </ion-row>
+    <ion-row style="border-top: 1px solid #c9c9c9;padding-bottom: 5%;padding-top: 5%">
+      <ion-col width-15 text-center>
+        <img src="img/number.png" style="height: 26px">
+      </ion-col>
+      <ion-col width-50 >
+        <input type="password" placeholder="请输入密码"  #pass
+               style="border: none;font-size: 24px;width: 100%" text-center >
+      </ion-col>
+      <ion-col width-25 text-center>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div style="width: 100%" text-center>
+    <button ion-buttons (click)="login(id.value,pass.value)"
+    style="width: 80%;height: 50px;font-size: 24px;color: white;background-color: #d2d2d2;
+    border-radius: 10px;margin-top: 10%">绑定</button>
+  </div>
+
+</ion-content>

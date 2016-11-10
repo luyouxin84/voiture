@@ -5,6 +5,7 @@ import { type } from '../home/datatype';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { done_deal } from '../done_deal/done_deal';
+import {relation_account} from "../relation_account/relation_account";
 
 @Component({
   selector: 'page-home',
@@ -62,5 +63,8 @@ export class HomePage implements OnInit{
 
 
 
+  }
+  temp(){
+    this.navCtrl.push(relation_account)
   }
 }

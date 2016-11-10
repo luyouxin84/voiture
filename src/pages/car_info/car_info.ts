@@ -41,7 +41,7 @@ export  class  car_info implements OnInit {
     // console.log(this.info);
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    var params = 'id='+ this.info.id +'&' +
+    let params = 'id='+ this.info.id +'&' +
         'cartype_id='+ this.info.cartype_id + '&' +
         'driver_id='+ this.info.driver_id + '&' +
         'picture1='+ this.info.picture1 + '&' +
