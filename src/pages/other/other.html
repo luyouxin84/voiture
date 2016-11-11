@@ -8,31 +8,46 @@
   border-style:solid;border-left: none;border-right: none ">
   <ion-grid>
     <ion-row style="text-align: center">
-      <ion-col width-33>全部</ion-col>
+      <ion-col width-33 style="color: red">包车价</ion-col>
       <ion-col width-33 (click)="gotoleave()">请假</ion-col>
       <ion-col width-33 (click)="gotoshuoshuo()">说说</ion-col>
     </ion-row>
   </ion-grid>
   </ion-toolbar>
   <ion-toolbar >
-    <ion-icon name ="ios-megaphone-outline"></ion-icon>
+    <ion-icon name ="ios-volume-up"></ion-icon>
     <label>{{TotalMessage}}</label>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div *ngFor="let item of baseList" >
-    <ion-item style="position: relative" >
-      <h2>
-        {{item.time}}
-      </h2>
-      <p style="position:absolute;top: 10px;right: 30px">
-        {{item.statue}}
-      </p>
-        <ion-item text-wrap style="border: none" style="border-bottom: 1px solid #f6f6f6">{{item.content}}</ion-item>
-    </ion-item>
-  </div>
+<ion-content >
+  <ion-list>
+  <ion-item>
+    <div>
+      <span>
+        <img src="img/home_location_green.png" width="10px">
+      </span>
+      <span style="color: #656565">
+       fsdfsdfsdfsdfsdfsdfdsf
+      </span>
+    </div>
+    <div>
+      <span>
+        <img src="img/home_locaton_red.png" width="10px">
+      </span>
+      <span style="color: #656565">
+        fsdfsdfsdfsdfsdfsdfdsf
+      </span>
+    </div>
 
+    <div style="display: flex;align-items: flex-end;position: relative">
+      <span style="font-size: 22px;margin-left: 5%"><ion-icon name="logo-yen"></ion-icon>price</span>
+      <span style="color: #656565">/天</span>
+      <span style="font-size: 22px;position: absolute;right: 5%;color: red"><ion-icon name="logo-yen"></ion-icon>
+total </span>
+    </div>
+  </ion-item>
+  </ion-list>
 
 
 </ion-content>

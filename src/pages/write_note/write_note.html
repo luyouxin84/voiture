@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      写备忘
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color: #f6f6f6">
+  <ion-list>
+    <ion-item>
+      <ion-label>标题</ion-label>
+      <ion-input type="text" placeholder="请输入标题内容" #tit></ion-input>
+    </ion-item>
+    <ion-item style="margin-top: 5%">
+      <ion-label>时间</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" pickerFormat="YYYY-MM-DDTHH:mm"
+                    min="2016-11-11" max="2017-05-05" [(ngModel)]="date" (ngModelChange)="output(date)">
+      </ion-datetime>
+    </ion-item>
+    <div style="color: #007aff;margin-top: 1%" text-center>
+      *  年/月/日，最后时间为24小时制 !
+    </div>
+    <ion-item style="margin-top: 5%">
+      <ion-textarea rows="16" style="height: 35%" placeholder="请输入正文" #cont></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <ion-buttons style="padding-left: 10%;padding-right: 10%">
+    <button ion-button block color="danger" (click)="post(tit.value ,cont.value)" >保存</button>
+  </ion-buttons>
+</ion-content>

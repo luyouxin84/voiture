@@ -3,7 +3,7 @@
  */
 import { Component,OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Http , Headers} from '@angular/http';
+import { Http } from '@angular/http';
 import  { RootObject } from '../leave/data';
 import { Screen } from  '../get_screen_info';
 import { leave } from '../leave/leave';

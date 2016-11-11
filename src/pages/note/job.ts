@@ -1,14 +1,21 @@
-/**
- * Created by Administrator on 2016/10/21.
- */
-export class job{
-  title:string;
-  time:string;
-  context:string;
+export interface detail {
+  id: string;
+  title: string;
+  context: string;
+  memo_date: string;
+  time: string;
+  driver_id: string;
+  isRemind: string;
+}
 
-  constructor(title: string, time: string, context: string) {
-    this.title = title;
-    this.time = time;
-    this.context = context;
-  }
+
+
+export interface Result {
+  length: number;
+}
+
+export interface RootObject {
+  code: string;
+  message: string;
+  result: Result;
 }

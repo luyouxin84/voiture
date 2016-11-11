@@ -6,6 +6,7 @@ import { OtherPage } from '../other/other';
 import { myPage } from '../my/my';
 import { NavController } from "ionic-angular";
 import { relation_account } from '../relation_account/relation_account';
+import { Sim } from 'ionic-native';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -24,6 +25,11 @@ export class TabsPage implements OnInit{
       console.log('测试的用户id：'+ localStorage.getItem('uid'));
     }
     // this.navCTRL.push(relation_account);
+    // 电话号码检测先不做
+    // Sim.getSimInfo().then(
+    //   (info) => alert('Sim info: '+ info),
+    //   (err) => alert('Unable to get sim info: '+ err)
+    // );
   }
   // this tells the tabs component which Pages
   // should be each tab's root Page

@@ -1,21 +1,26 @@
-<ion-header>
+<ion-header style="border-bottom: 1px solid #e0e0e0">
   <ion-navbar>
     <ion-title>
-      报备
+      司机备忘
     </ion-title>
+    <ion-buttons end right>
+      <button ion-button color="primery" (click)="write_note()" >添加新备忘></button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content  style="background-color: #f7f7f7">
-  <ion-item>
-    <ion-label>点击选择起始时间 月/日/年</ion-label>
-    <ion-datetime displayFormat="MM/DD/YYYY" ></ion-datetime>
-  </ion-item>
-  <ion-list *ngFor="let item of totalJob">
-    <ion-item-divider >
-      {{item.date}}
-    </ion-item-divider>
-    <!--//做一个输入属性带入下边组件-->
-      <detail-date [todos]="item.dayjob"></detail-date>
+
+  <ion-list>
+    <div *ngFor="let item of list">
+      <ion-item-divider>
+        {{item.title}}
+      </ion-item-divider>
+      <ion-item>
+        <div>{{item.date}}</div>
+        <div>{{item.context}}</div>
+      </ion-item>
+    </div>
   </ion-list>
+
 </ion-content>

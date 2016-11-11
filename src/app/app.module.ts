@@ -8,7 +8,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 import  { myPage } from  '../pages/my/my'
 import  { message} from  '../pages/my/message'
 import  { Screen } from  '../pages/get_screen_info';
-import { detaildate } from '../pages/note/detaildate';
 import {done_deal} from  '../pages/done_deal/done_deal';
 import {car_info} from "../pages/car_info/car_info";
 import {person_info} from "../pages/person_info/person_info";
@@ -20,6 +19,7 @@ import { order_detail } from '../pages/order_detail/order_detail';
 import {relation_account} from "../pages/relation_account/relation_account";
 import {demand_cash} from "../pages/demand_cash/demand_cash";
 import {note_detail} from "../pages/note_detail/note_detail";
+import {write_note} from "../pages/write_note/write_note";
 
 
 @NgModule({
@@ -31,7 +31,6 @@ import {note_detail} from "../pages/note_detail/note_detail";
     TabsPage,
     myPage,
     message,
-    detaildate,
     done_deal,
     car_info,
     person_info,
@@ -43,9 +42,15 @@ import {note_detail} from "../pages/note_detail/note_detail";
     relation_account,
     demand_cash,
     note_detail,
+    write_note,
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{
+      mode:'ios',
+      backButtonText:'返回上页',
+      pageTransition:'ios',
+      tabsPlacement: 'bottom',
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -66,6 +71,7 @@ import {note_detail} from "../pages/note_detail/note_detail";
     relation_account,
     demand_cash,
     note_detail,
+    write_note,
   ],
   providers: [ Screen ]
 })
