@@ -1,0 +1,10 @@
+<ion-item >
+  <ion-row>
+    <ion-col width-100>
+      <select style="width: 100%" (change)="pick($event)" >
+        <option value="" disabled selected>选择所在区域</option>
+        <option [value] ="prov.value" *ngFor="let prov of list">{{prov.name}}</option>
+      </select>
+    </ion-col>
+  </ion-row>
+</ion-item>

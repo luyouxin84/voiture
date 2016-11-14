@@ -20,6 +20,8 @@ import {relation_account} from "../pages/relation_account/relation_account";
 import {demand_cash} from "../pages/demand_cash/demand_cash";
 import {note_detail} from "../pages/note_detail/note_detail";
 import {write_note} from "../pages/write_note/write_note";
+import {add_baoche} from "../pages/add_baoche/add_baoche";
+import {pick_address_baoche} from "../pages/add_baoche/pick_address_baoche";
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import {write_note} from "../pages/write_note/write_note";
     demand_cash,
     note_detail,
     write_note,
+    add_baoche,
+    pick_address_baoche,
   ],
   imports: [
     IonicModule.forRoot(MyApp,{
@@ -72,6 +76,7 @@ import {write_note} from "../pages/write_note/write_note";
     demand_cash,
     note_detail,
     write_note,
+    add_baoche,
   ],
   providers: [ Screen ]
 })

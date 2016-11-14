@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { leave } from '../leave/leave';
 import { shuoshuo } from '../shuoshuo/shuoshuo';
+import {add_baoche} from "../add_baoche/add_baoche";
 @Component({
   selector: 'page-other',
   templateUrl: 'other.html'
@@ -22,6 +23,9 @@ export class OtherPage {
   }
   gotodetail(){
 
+  }
+  addNew(){
+    this.navCtrl.push(add_baoche);
   }
 
 }
