@@ -3,7 +3,7 @@
  */
 import { Component ,OnInit} from '@angular/core';
 import { NavController ,NavParams } from 'ionic-angular';
-import { RootObject ,OrderDetail } from '../order_detail/data';
+import { RootObject  } from '../order_detail/data';
 import {Http} from "@angular/http";
 
 @Component({

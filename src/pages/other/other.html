@@ -24,14 +24,23 @@
 </ion-header>
 
 <ion-content >
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="更新数据..."
+      >
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-list>
-  <ion-item>
+  <ion-item *ngFor="let item of list">
     <div>
       <span>
         <img src="img/home_location_green.png" width="10px">
       </span>
       <span style="color: #656565">
-       fsdfsdfsdfsdfsdfsdfdsf
+       {{item.startAddress}}
       </span>
     </div>
     <div>
@@ -39,15 +48,14 @@
         <img src="img/home_locaton_red.png" width="10px">
       </span>
       <span style="color: #656565">
-        fsdfsdfsdfsdfsdfsdfdsf
+        {{item.endAddress}}
       </span>
     </div>
 
     <div style="display: flex;align-items: flex-end;position: relative">
-      <span style="font-size: 22px;margin-left: 5%"><ion-icon name="logo-yen"></ion-icon>price</span>
+      <span style="font-size: 22px;margin-left: 5%"><ion-icon name="logo-yen"></ion-icon>{{item.dayPrice}}</span>
       <span style="color: #656565">/天</span>
-      <span style="font-size: 22px;position: absolute;right: 5%;color: red"><ion-icon name="logo-yen"></ion-icon>
-total </span>
+      <span style="font-size: 22px;position: absolute;right: 5%;color: red"><ion-icon name="logo-yen"></ion-icon>{{item.price}}</span>
     </div>
   </ion-item>
   </ion-list>

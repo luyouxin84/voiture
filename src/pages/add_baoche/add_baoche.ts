@@ -1,6 +1,5 @@
-import {Component, OnInit, ElementRef, ViewChild, Renderer} from "@angular/core";
+import {Component, OnInit,} from "@angular/core";
 import {Http, Headers} from "@angular/http";
-import {copy} from "@ionic/app-scripts/dist";
 
 @Component({
   templateUrl:'add_baoche.html',
@@ -22,6 +21,8 @@ export class add_baoche implements OnInit{
   start_selected:boolean = false;
   end:string;
   end_selected:boolean = false;
+  dayPrice:string = null;
+  price:string = null;
   ngOnInit(): void {
     this.initProvinceData(this.test_list);
     this.initProvinceData(this.dest_test_list);
@@ -188,17 +189,26 @@ export class add_baoche implements OnInit{
   constructor(public http:Http) {
   }
   post(){
-
-    if ( this.start_selected == false && this.end_selected == false ){
+    if ( this.start_selected == false || this.end_selected == false || this.dayPrice==null || this.price==null ){
       console.log('不全');
+
     } else{
       console.log( this.start,this.end);
+      let headers= new Headers();
+      headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+      let params = 'driver_id=1'+ '&star='+this.start+'&end='+this.end+'&dayPrice='+this.dayPrice+'&price='+
+        this.price;
+      this.http.post('http://www.shengyoudengwang.com/Service/Car/addressPriceAdd.html',params,{headers:headers})
+        .subscribe( res =>
+        {
+          console.log( res.json());
+        })
     }
   }
 
 }
 
-class map_item {
+export class map_item {
   value:string;
   name:string;
 

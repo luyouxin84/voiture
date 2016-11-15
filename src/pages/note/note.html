@@ -12,13 +12,13 @@
 <ion-content  style="background-color: #f7f7f7">
 
   <ion-list>
-    <div *ngFor="let item of list">
-      <ion-item-divider>
-        {{item.title}}
+    <div *ngFor="let item of list" >
+      <ion-item-divider *ngIf=" item.date_of_day != 'length'? true:false">
+        {{item.date_of_day}}
       </ion-item-divider>
-      <ion-item>
-        <div>{{item.date}}</div>
-        <div>{{item.context}}</div>
+      <ion-item *ngFor="let child of item.job">
+        <div>{{child.time}}</div>
+        <div>{{child.context}}</div>
       </ion-item>
     </div>
   </ion-list>

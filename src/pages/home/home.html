@@ -11,7 +11,17 @@
 </ion-header>
 
 <ion-content style="background-color: #eeeeee;">
- <div style="width: 90%;background-color:white;border-radius: 2%;margin-top: 10px;margin-left: 5%;overflow: hidden"
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="更新数据...">
+
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div style="width: 90%;background-color:white;border-radius: 2%;margin-top: 10px;margin-left: 5%;overflow: hidden"
       *ngFor="let item of joblist">
     <div class="fullwidth" style="color: red;padding-left: 3%;font-size: 17px;
       padding-top: 7px;padding-bottom:2px;border-bottom: 1px solid #e5e5e5">{{item.title}}</div>

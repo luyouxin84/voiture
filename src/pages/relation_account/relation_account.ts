@@ -1,7 +1,6 @@
 import {Component} from "@angular/core";
 import {Http, Headers} from "@angular/http";
 import {NavController} from "ionic-angular";
-import {TabsPage} from "../tabs/tabs";
 @Component({
   templateUrl:'relation_account.html',
   selector:'relation_account'

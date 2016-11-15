@@ -6,7 +6,7 @@ import { OtherPage } from '../other/other';
 import { myPage } from '../my/my';
 import { NavController } from "ionic-angular";
 import { relation_account } from '../relation_account/relation_account';
-import { Sim } from 'ionic-native';
+// import { Sim } from 'ionic-native';
 
 @Component({
   templateUrl: 'tabs.html'

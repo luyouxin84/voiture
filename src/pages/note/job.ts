@@ -1,21 +1,18 @@
-export interface detail {
-  id: string;
-  title: string;
-  context: string;
-  memo_date: string;
-  time: string;
-  driver_id: string;
-  isRemind: string;
-}
 
 
 
 export interface Result {
-  length: number;
+ title?:string;
+  time:string;
+  context:string;
 }
 
-export interface RootObject {
-  code: string;
-  message: string;
-  result: Result;
+export class day {
+  date_of_day: string;
+  job: Result[];
+
+  constructor(date_of_day: string, job: Result[]) {
+    this.date_of_day = date_of_day;
+    this.job = job;
+  }
 }

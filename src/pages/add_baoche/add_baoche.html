@@ -20,10 +20,10 @@
         </ion-col>
       </ion-row>
     </ion-item>
-    <pick_add [list]="first_menu" (selected)="first_menu_selected($event)" *ngIf="(first_menu != '') ? true:false"></pick_add>
-    <pick_add [list]="second_menu" (selected)="second_menu_selected($event)" *ngIf="(second_menu != '') ? true:false"></pick_add>
-    <pick_add [list]="third_menu" (selected)="third_menu_selected($event)" *ngIf="(third_menu != '') ? true:false"></pick_add>
-    <pick_add [list]="fourth_menu" (selected)="fourth_menu_selected($event)" *ngIf="(fourth_menu != '') ? true:false"></pick_add>
+    <pick_add [list]="first_menu" (selected)="first_menu_selected($event)" *ngIf="(first_menu.length != 0) ? true:false"></pick_add>
+    <pick_add [list]="second_menu" (selected)="second_menu_selected($event)" *ngIf="(second_menu.length != 0) ? true:false"></pick_add>
+    <pick_add [list]="third_menu" (selected)="third_menu_selected($event)" *ngIf="(third_menu.length != 0) ? true:false"></pick_add>
+    <pick_add [list]="fourth_menu" (selected)="fourth_menu_selected($event)" *ngIf="(fourth_menu.length != 0) ? true:false"></pick_add>
     <ion-item-divider>
       目的地
     </ion-item-divider>
@@ -37,10 +37,10 @@
         </ion-col>
       </ion-row>
     </ion-item>
-    <pick_add [list]="dest_first_menu" (selected)="dest_first_menu_selected($event)" *ngIf="(dest_first_menu != '') ? true:false"></pick_add>
-    <pick_add [list]="dest_second_menu" (selected)="dest_second_menu_selected($event)" *ngIf="(dest_second_menu != '') ? true:false"></pick_add>
-    <pick_add [list]="dest_third_menu" (selected)="dest_third_menu_selected($event)" *ngIf="(dest_third_menu != '') ? true:false"></pick_add>
-    <pick_add [list]="dest_fourth_menu" (selected)="dest_fourth_menu_selected($event)" *ngIf="(dest_fourth_menu != '') ? true:false"></pick_add>
+    <pick_add [list]="dest_first_menu" (selected)="dest_first_menu_selected($event)" *ngIf="(dest_first_menu.length != 0) ? true:false"></pick_add>
+    <pick_add [list]="dest_second_menu" (selected)="dest_second_menu_selected($event)" *ngIf="(dest_second_menu.length != 0) ? true:false"></pick_add>
+    <pick_add [list]="dest_third_menu" (selected)="dest_third_menu_selected($event)" *ngIf="(dest_third_menu.length != 0) ? true:false"></pick_add>
+    <pick_add [list]="dest_fourth_menu" (selected)="dest_fourth_menu_selected($event)" *ngIf="(dest_fourth_menu.length != 0) ? true:false"></pick_add>
 
   </ion-list>
   <ion-row text-center style="padding-top: 5%">
@@ -48,7 +48,7 @@
       日/元
     </ion-col>
     <ion-col width-75>
-      <input type="text" style="border:none;border-bottom: 1px solid #e6e6e6;background-color: transparent;width: 90%">
+      <input type="number" style="border:none;border-bottom: 1px solid #e6e6e6;background-color: transparent;width: 90%" [(ngModel)]="dayPrice">
     </ion-col>
   </ion-row>
   <ion-row text-center style="padding-top: 5%">
@@ -56,7 +56,7 @@
       价格
     </ion-col>
     <ion-col width-75>
-      <input type="text" style="border:none;border-bottom: 1px solid #e6e6e6;background-color: transparent;width: 90%">
+      <input type="number" style="border:none;border-bottom: 1px solid #e6e6e6;background-color: transparent;width: 90%" [(ngModel)]="price">
     </ion-col>
   </ion-row>
   <ion-buttons style="padding-top: 5%">
