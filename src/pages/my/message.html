@@ -1,9 +1,9 @@
 <div class="container" >
   <div>
-    <ion-item detail-push *ngFor="let item of list" style="border-bottom: 1px solid #f6f6f6">
-      <h2 padding-top padding-bottom>{{item.time}}</h2>
-      <label>{{item.money}}</label>
-      <div style="float: right;padding-right: 15%">{{item.restmoney}}</div>
+    <ion-item detail-push *ngFor="let item of list" style="border-bottom: 1px solid #f6f6f6" (click)="godetail()">
+      <div style="padding-bottom: 2%">{{item.billtime}}</div>
+      <label>当月提款:{{item.Amount}}</label>
+      <div style="float: right;padding-right: 15%">当月余额:{{item.balance}}</div>
     </ion-item>
   </div>
 </div>

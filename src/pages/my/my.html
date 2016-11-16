@@ -14,11 +14,11 @@
     <ion-icon name ="ios-megaphone-outline"></ion-icon>
     <label>{{TotalMessage}}</label>
   </ion-toolbar>
-  <show-message *ngIf="myBase" [heigh]="win.hei"></show-message>
-  <div style="width: 100%;font-size: 22px;font-weight: 600;padding-top: 10px" *ngIf="myBase">
-    <div style="float: right;color: red">{{total}}</div>
-    <div style="float: right">余额总计:</div>
-    </div>
+  <show-message (emit)="recevie_data_long($event)" (emit_godetail)="goto_cash_flow($event)"></show-message>
+  <div style="width: 100%;font-size: 22px;font-weight: 500;padding-top: 10px;padding-right: 10%" >
+    <div style="float: right;color: red;font-size: 18px">{{total}}</div>
+    <div style="float: right;color: #666666;font-size: 18px">余额总计:</div>
+  </div>
   <div style="margin-top: 10%;" padding-horizontal >
     <button ion-button color="danger" round block (click)="change()">申请提款</button>
   </div>

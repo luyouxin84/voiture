@@ -30,6 +30,7 @@ export class OtherPage implements OnInit{
           t.splice(0);
           console.log('获取到包车价格列表');
           console.log(obj.result.List);
+          this.TotalMessage = '共有 '+obj.result.List.length.toString()+' 条包车价格';
           for ( let i = 0; i < obj.result.List.length;i++){
             t.push( new detail(obj.result.List[i].startAddress,obj.result.List[i].endAddress,obj.result.List[i].dayPrice
             ,obj.result.List[i].price));

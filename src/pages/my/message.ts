@@ -1,35 +1,41 @@
 /**
  * Created by Administrator on 2016/10/18.
  */
-import { Component ,Input ,OnInit } from '@angular/core';
-import {bill} from '../my/bill';
-
+import {Component,  OnInit, EventEmitter, Output} from '@angular/core';
+import {RootObject, BillList} from '../my/data';
+import {Http} from "@angular/http";
 
 @Component({
   selector:'show-message',
   templateUrl:'message.html'
 })
 export class message implements OnInit{
-   list:bill[] = [];
-  @Input() isshow:string;
-  @Input() myBaseInput:string;
-   elementHeight:number;
-  @Input() heigh:number;
-   initListData():void {
-    this.list.push(new bill("2016年10月18日16:58:57",200.00,400.00));
-    this.list.push(new bill("2016年10月18日16:58:57",200.00,400.00));
-    this.list.push(new bill("2016年10月18日16:58:57",200.00,400.00));
-    this.list.push(new bill("2016年10月18日16:58:57",200.00,400.00));
-    this.list.push(new bill("2016年10月18日16:58:57",200.00,400.00));
-  }
-  constructor() {
-    this.initListData();
+  data:RootObject;
+  list:BillList[]=[];
+  @Output() emit:EventEmitter<number> = new EventEmitter();
+  @Output() emit_godetail:EventEmitter<string> = new EventEmitter();
+  constructor( public http:Http) {
 
   }
   ngOnInit(){
-    this.elementHeight = this.heigh * 0.132;
-    this.myBaseInput = this.elementHeight.toString()+"px";
-    console.log(this.myBaseInput);
+    this.get_http_data();
   }
+
+  private get_http_data() {
+    this.list.splice(0);
+    this.http.get('http://www.shengyoudengwang.com/Service/Car/billList.html')
+      .subscribe( res =>{
+        this.data = res.json();
+        // console.log(this.data);
+        this.list = this.data.result.BillList;
+        console.log(this.list);
+        this.emit.emit(this.list.length);
+      })
+
+  }
+  godetail(){
+    this.emit_godetail.emit('xxxx');
+  }
+
 
 }

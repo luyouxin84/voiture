@@ -34,7 +34,7 @@
     </ion-refresher-content>
   </ion-refresher>
   <ion-list>
-  <ion-item *ngFor="let item of list">
+  <ion-item *ngFor="let item of list" style="border-bottom: 1px solid #e0e0e0">
     <div>
       <span>
         <img src="img/home_location_green.png" width="10px">
@@ -53,9 +53,9 @@
     </div>
 
     <div style="display: flex;align-items: flex-end;position: relative">
-      <span style="font-size: 22px;margin-left: 5%"><ion-icon name="logo-yen"></ion-icon>{{item.dayPrice}}</span>
+      <span style="margin-left: 5%;font-size: 20px"><ion-icon name="logo-yen" style="font-size: 17px"></ion-icon>{{item.dayPrice}}</span>
       <span style="color: #656565">/天</span>
-      <span style="font-size: 22px;position: absolute;right: 5%;color: red"><ion-icon name="logo-yen"></ion-icon>{{item.price}}</span>
+      <span style="font-size: 20px;position: absolute;right: 5%;color: red"><ion-icon name="logo-yen" style="font-size: 17px"></ion-icon>{{item.price}}</span>
     </div>
   </ion-item>
   </ion-list>

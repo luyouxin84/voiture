@@ -8,6 +8,7 @@ import  {Screen } from  '../get_screen_info';
 import {person_info} from "../person_info/person_info";
 import {car_info} from "../car_info/car_info";
 import {demand_cash} from "../demand_cash/demand_cash";
+import {cash_flow} from "../cash_flow/cash_flow";
 
 @Component({
   selector: 'page-my',
@@ -17,15 +18,11 @@ export class myPage {
    sort:string;
    TotalMessage:string;
    total:string;
-   myBase:boolean;
-   myBase2:string;
    win:screen_info;
 
   constructor(public navCtrl: NavController ,private screeninfo:Screen ) {
-    this.TotalMessage = "共有 3 条消息"
-    this.total = "1888.00 元"
-    this.myBase = true;
-    this.myBase2 ='123132131';
+    this.TotalMessage = "没有记录";
+    this.total = "1888.00 元";
     this.win = new screen_info(screeninfo.getscreen().wid,this.screeninfo.getscreen().hei);
     console.log( this.win.hei);
     }
@@ -46,5 +43,12 @@ export class myPage {
     } else{
       console.log( 'out not run correct')
     }
+  }
+  recevie_data_long(e:any){
+    // console.log('接收到数据条目'+e);
+    this.TotalMessage = "共有 " + e + " 条消息";
+  }
+  goto_cash_flow(  e:any ){
+    this.navCtrl.push(cash_flow);
   }
 }

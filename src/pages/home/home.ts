@@ -1,8 +1,8 @@
 import { Component ,OnInit} from '@angular/core';
 
 import { NavController } from 'ionic-angular';
-import { type } from '../home/datatype';
-import { Http } from '@angular/http';
+import {RootObject, List} from '../home/datatype';
+import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { done_deal } from '../done_deal/done_deal';
 import {relation_account} from "../relation_account/relation_account";
@@ -14,9 +14,17 @@ import {CallNumber} from 'ionic-native';
 })
 export class HomePage implements OnInit{
   switchFunction:string;
-  joblist:type[]=[];
-  http_result:any[]=[];
+  joblist:List[]=[];
+  http_result:RootObject;
   http:Http;
+  statue_0:any={
+    'background-color': '#97ce68',
+    'color': 'white'
+  };
+  statue_1:any={
+    'background-color': '#f01414',
+    'color': 'white'
+  };
   constructor(public navCtrl: NavController , http:Http) {
     this.http = http;
   }
@@ -33,41 +41,31 @@ export class HomePage implements OnInit{
   }
   //获取网络数据
   get_http_data(){
-    this.http.get('http://www.shengyoudengwang.com/Service/Car/myOrder.html')
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    this.http.post('http://www.shengyoudengwang.com/Service/Car/receiveOrder.html','driver_id=1',{headers:headers})
     // .map( res => res.json())
       .subscribe(
         res => {
-          this.http_result = res.json().result.Order;
-          console.log(this.http_result);
-          let status:string;
-          for( let i =0 ; i<this.http_result.length;i++){
-            switch (this.http_result[i].status){
-              //0:等待接单，1:已经接单，2:开始  3:完成(等待付款)  4:已付款(等待评价)  5:（订单取消）
-              case '0':
-                status = '等待接单';
-                break;
-              case '1':
-                status = '已经接单';
-                break;
-              case '2':
-                status = '开始';
-                break;
-              case '3':
-                status = '完成';
-                break;
-              case '4':
-                status = '已付款';
-                break;
-              case '5':
-                status = '订单取消';
-                break;
+          this.http_result = res.json();
+          if ( this.http_result.code = '200'){
+            this.joblist = this.http_result.result.List;
+            console.log(this.joblist);
+            for ( let i =0 ;i<this.joblist.length;i++){
+              if (this.joblist[i].UserStatus === '0'){
+                this.joblist[i].UserStatus = '接单';
+              } else if(this.joblist[i].UserStatus ==='1'){
+                this.joblist[i].UserStatus = '开始';
+              } else{
+                this.joblist[i].UserStatus = '完成';
+              }
             }
-            this.joblist.push( new type(this.http_result[i].useDate,this.http_result[i].startingPoint,this.http_result[i].endPoint,
-              'facelink',this.http_result[i].startingTime,'13941549183',this.http_result[i].price,
-              status));
+          }else
+          {
+            alert('数据请求失败');
           }
-        }
-      );
+          }
+        );
   }
    ngOnInit(): void {
      this.get_http_data();
@@ -80,5 +78,20 @@ export class HomePage implements OnInit{
     CallNumber.callNumber(number, true)
       .then(() => console.log('Launched dialer!'))
       .catch(() => console.log('Error launching dialer'));
+  }
+  post_data(link:string,parmas:string){
+    console.log(parmas);
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    this.http.post(link,parmas,{headers:headers})
+      .subscribe(
+        res => alert ( res.json().message)
+      )
+  }
+  cancel(e:any){
+    this.post_data('http://www.shengyoudengwang.com/Service/Car/cancelClick.html','driver_id=1&id='+e)
+  }
+  change_status(e:any){
+    this.post_data('http://www.shengyoudengwang.com/Service/Car/receiveClick.html','driver_id=1&id='+e);
   }
 }

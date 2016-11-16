@@ -21,33 +21,38 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <div style="width: 90%;background-color:white;border-radius: 2%;margin-top: 10px;margin-left: 5%;overflow: hidden"
+  <div style="width: 90%;background-color:white;border-radius: 2%;margin-top: 10px;margin-left: 5%;overflow: hidden;position: relative"
       *ngFor="let item of joblist">
     <div class="fullwidth" style="color: red;padding-left: 3%;font-size: 17px;
-      padding-top: 7px;padding-bottom:2px;border-bottom: 1px solid #e5e5e5">{{item.title}}</div>
+      padding-top: 7px;padding-bottom:2px;border-bottom: 1px solid #e5e5e5">{{item.startingTime}}</div>
+    <div style="position: absolute;right: 5%;top: 3%;color: #8c8c8c;font-size: 17px" *ngIf="item.UserStatus === '开始'" (click)="cancel(item.id)">
+      取消
+    </div>
     <div style="display: inline-block;width: 100%;padding-left: 3%;margin-top: 1%">
-      <img src="img/home_location_green.png" width="7%" style="height: 18px;width: 11px"/>
-      <span style="font-size: 17px">{{item.begin}}</span>
+      <span >
+        <img src="img/home_location_green.png" width="3%" />
+      </span>
+      <span style="font-size: 17px">{{item.startingPoint}}</span>
     </div>
    <div style="display: inline-block;width: 100%;padding-left: 3%;margin-top: 1%">
-      <img src="img/home_locaton_red.png" width="7%" style="height: 18px;width: 11px"/>
-      <span style="font-size: 17px">{{item.end}}</span>
+      <img src="img/home_locaton_red.png" width="3%" />
+      <span style="font-size: 17px">{{item.endPoint}}</span>
     </div>
    <ion-grid style="padding: 0;background-color: #f7f7f7;margin-top: 1%">
-     <ion-row style="padding:3px;height: 58px">
+     <ion-row style="padding: 6px;height: 58px">
        <ion-col width-20 text-center><img src="img/face.png" width="70%"></ion-col>
        <ion-col width-60 >
             <div style="height: 50%">
               <span><img src="img/telephone.png" width="9%"></span>
-              <span style="font-size: 17px">{{item.telephone}}</span>
+              <span style="font-size: 17px">{{item.account}}</span>
             </div>
-            <div style="color: #bdbdbd;height: 50%;font-size: 16px">{{item.time}}</div>
+            <div style="color: #bdbdbd;height: 50%;font-size: 16px">{{item.ordertime}}</div>
        </ion-col>
        <ion-col width-20 text-center> <img src="img/telephone_big.png" width="70%" (click)="callNumber(item.telephone)"></ion-col>
      </ion-row>
      <ion-row style="height: 50px">
        <ion-col width-50 text-center padding style="background-color: white"><span>估计费用：</span><span style="color: red" >{{item.price}}</span></ion-col>
-       <ion-col width-50 style="background-color: #97ce68;color: white" text-center padding>{{item.todo}}</ion-col>
+       <ion-col width-50 [ngStyle]="item.UserStatus=='开始'?statue_0:statue_1" text-center padding (click)="change_status(item.id)">{{item.UserStatus}}</ion-col>
      </ion-row>
    </ion-grid>
  </div>

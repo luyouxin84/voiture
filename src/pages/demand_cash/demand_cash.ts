@@ -21,7 +21,7 @@ export class demand_cash{
       .subscribe(res =>
       {
         console.log((res.json()));
-        alert(res.json());
+        alert(res.json().message);
         this.navCTRL.pop();
       })
   }
