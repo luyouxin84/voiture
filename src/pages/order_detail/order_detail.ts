@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/11/9.
  */
 import { Component ,OnInit} from '@angular/core';
-import { NavController ,NavParams } from 'ionic-angular';
+import {NavController, NavParams, ViewController} from 'ionic-angular';
 import { RootObject  } from '../order_detail/data';
 import {Http} from "@angular/http";
 
@@ -14,7 +14,7 @@ export class order_detail implements OnInit{
   id:string;
   list:any={} ;
   list_evaluate_star:string[]=[];
-  constructor(public  navCTRL:NavController,public navParam:NavParams,public http:Http){
+  constructor(public  navCTRL:NavController,public navParam:NavParams,public http:Http,public viewCtrl:ViewController){
     this.id = navParam.get("id");
   }
 
@@ -43,5 +43,8 @@ export class order_detail implements OnInit{
           this.list_evaluate_star[4] = 'star-half';
         }
       })
+  }
+  dismiss(){
+    this.viewCtrl.dismiss();
   }
 }

@@ -21,5 +21,10 @@ export class Screen{
     let date = year + ' 年 '+ month+' 月 ' +day+' 日';
     return date;
   }
+
+
+
+
+
 }
 

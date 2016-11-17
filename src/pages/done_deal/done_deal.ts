@@ -3,7 +3,7 @@
  */
 
 import { Component , OnInit} from  '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController ,ModalController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { RootObject } from '../done_deal/data';
 import { order_detail} from '../order_detail/order_detail';
@@ -16,13 +16,18 @@ export class done_deal implements OnInit{
   public http:Http;
   list:any[]=[];
   data:RootObject;
-  constructor( public navCtrl:NavController , http:Http) {
+
+  constructor( public navCtrl:NavController , http:Http,public modalCtrl:ModalController) {
     this.http = http;
+
   }
   gotodetail(getid:string){
-    this.navCtrl.push(order_detail,{
+    // this.navCtrl.push(order_detail,{
+    //   id : getid
+    // })
+    this.modalCtrl.create( order_detail,{
       id : getid
-    })
+    }).present();
   }
   ngOnInit(): void {
 

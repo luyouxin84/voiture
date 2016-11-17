@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {Http, Headers} from "@angular/http";
 import {NavController} from "ionic-angular";
+import {create_account} from "../create_account/create_account";
 @Component({
   templateUrl:'relation_account.html',
   selector:'relation_account'
@@ -25,5 +26,8 @@ export class relation_account{
         }
         }
       )
+  }
+  new_user(){
+      this.navCTRL.push( create_account );
   }
 }

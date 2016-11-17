@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      用户注册
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item padding>
+    <ion-label color="primary" floating >用户手机号码</ion-label>
+    <ion-input type="number" #phone ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" floating>密码</ion-label>
+    <ion-input type="password" #pass></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color="primary" floating >再次输入密码</ion-label>
+    <ion-input type="password" #pass1 (change)="check_valid(phone.value,pass.value,pass1.value)"></ion-input>
+  </ion-item>
+  <div text-center style="width: 80%;margin-left: 10%">
+    <p>
+      注册用户需要验证手机号码有效性，点击红色按钮获取验证信息，并填入下方验证码位置
+    </p>
+    <button ion-button color="danger" (click)="get_code(phone.value)">{{get_code_text}}</button>
+  </div>
+  <ion-item>
+    <ion-label color="primary" floating>验证码</ion-label>
+    <ion-input type="number"></ion-input>
+  </ion-item>
+  <div>
+    用户协议部分，还没做
+  </div>
+  <ion-buttons>
+    <button ion-button block color="secondary" [disabled]="valid">创建账号</button>
+  </ion-buttons>
+  <div>
+    {{result}}
+  </div>
+</ion-content>

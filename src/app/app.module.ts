@@ -23,6 +23,8 @@ import {write_note} from "../pages/write_note/write_note";
 import {add_baoche} from "../pages/add_baoche/add_baoche";
 import {pick_address_baoche} from "../pages/add_baoche/pick_address_baoche";
 import {cash_flow} from "../pages/cash_flow/cash_flow";
+import {create_account} from "../pages/create_account/create_account";
+import {http_basic_lib} from "../pages/http_basic_lib";
 
 
 @NgModule({
@@ -49,6 +51,7 @@ import {cash_flow} from "../pages/cash_flow/cash_flow";
     add_baoche,
     pick_address_baoche,
     cash_flow,
+    create_account,
   ],
   imports: [
     IonicModule.forRoot(MyApp,{
@@ -80,7 +83,8 @@ import {cash_flow} from "../pages/cash_flow/cash_flow";
     write_note,
     add_baoche,
     cash_flow,
+    create_account
   ],
-  providers: [ Screen ]
+  providers: [ Screen ,http_basic_lib]
 })
 export class AppModule {}
