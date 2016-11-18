@@ -23,6 +23,7 @@ export class TabsPage implements OnInit{
       this.tabshow = true;
       this.loginshow = false;
       console.log('测试的用户id：'+ localStorage.getItem('uid'));
+      console.log('测试的司机id：'+ localStorage.getItem('driver_id'));
     }
     // this.navCTRL.push(relation_account);
     // 电话号码检测先不做

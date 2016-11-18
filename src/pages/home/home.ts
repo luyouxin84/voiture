@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import { done_deal } from '../done_deal/done_deal';
 import {relation_account} from "../relation_account/relation_account";
 import {CallNumber} from 'ionic-native';
+import {http_basic_lib} from "../http_basic_lib";
 
 @Component({
   selector: 'page-home',
@@ -25,7 +26,7 @@ export class HomePage implements OnInit{
     'background-color': '#f01414',
     'color': 'white'
   };
-  constructor(public navCtrl: NavController , http:Http) {
+  constructor(public navCtrl: NavController , http:Http ,private get_data:http_basic_lib) {
     this.http = http;
   }
   load_done_order(){
@@ -41,31 +42,28 @@ export class HomePage implements OnInit{
   }
   //获取网络数据
   get_http_data(){
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    this.http.post('http://www.shengyoudengwang.com/Service/Car/receiveOrder.html','driver_id=1',{headers:headers})
-    // .map( res => res.json())
+    this.get_data.http_service_post('receiveOrder','driver_id=1')
       .subscribe(
         res => {
-          this.http_result = res.json();
-          if ( this.http_result.code = '200'){
-            this.joblist = this.http_result.result.List;
-            console.log(this.joblist);
-            for ( let i =0 ;i<this.joblist.length;i++){
-              if (this.joblist[i].UserStatus === '0'){
-                this.joblist[i].UserStatus = '接单';
-              } else if(this.joblist[i].UserStatus ==='1'){
-                this.joblist[i].UserStatus = '开始';
-              } else{
-                this.joblist[i].UserStatus = '完成';
-              }
-            }
-          }else
-          {
-            alert('数据请求失败');
-          }
-          }
-        );
+                  this.http_result = res;
+                  if ( this.http_result.code = '200'){
+                    this.joblist = this.http_result.result.List;
+                    console.log(this.joblist);
+                    for ( let i =0 ;i<this.joblist.length;i++){
+                      if (this.joblist[i].UserStatus === '0'){
+                        this.joblist[i].UserStatus = '接单';
+                      } else if(this.joblist[i].UserStatus ==='1'){
+                        this.joblist[i].UserStatus = '开始';
+                      } else{
+                        this.joblist[i].UserStatus = '完成';
+                      }
+                    }
+                  }else
+                  {
+                    alert('数据请求失败');
+                  }
+                  }
+                );
   }
    ngOnInit(): void {
      this.get_http_data();

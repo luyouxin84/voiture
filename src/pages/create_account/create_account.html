@@ -8,15 +8,15 @@
 
 <ion-content>
   <ion-item padding>
-    <ion-label color="primary" floating >用户手机号码</ion-label>
-    <ion-input type="number" #phone ></ion-input>
+    <ion-label color="primary" floating >用户手机号码<span style="color: red">{{wrongNum}}</span></ion-label>
+    <ion-input type="number" #phone (change)="check_valid(phone.value,pass.value,pass1.value)"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label color="primary" floating>密码</ion-label>
-    <ion-input type="password" #pass></ion-input>
+    <ion-input type="password" #pass (change)="check_valid(phone.value,pass.value,pass1.value)"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label color="primary" floating >再次输入密码</ion-label>
+    <ion-label color="primary" floating >再次输入密码<span style="color: red">{{wrongPass}}</span></ion-label>
     <ion-input type="password" #pass1 (change)="check_valid(phone.value,pass.value,pass1.value)"></ion-input>
   </ion-item>
   <div text-center style="width: 80%;margin-left: 10%">
@@ -27,15 +27,14 @@
   </div>
   <ion-item>
     <ion-label color="primary" floating>验证码</ion-label>
-    <ion-input type="number"></ion-input>
+    <ion-input type="number"  #vcode ></ion-input>
   </ion-item>
-  <div>
-    用户协议部分，还没做
+  <div text-center style="margin-top: 5%">
+    <a href="http://wenku.baidu.com/link?url=pSHEGj3hiUI2MgIQ_-h1ZRL1IQMPYtVcd--zL_wJNwE1w_KGYBsEHbJ5fcFeuFx
+    2FODZC50iph_kWLQ390jmA2ERiZTNrNs6fWd6knDD0li">用户协议部分，还没做</a>
   </div>
-  <ion-buttons>
-    <button ion-button block color="secondary" [disabled]="valid">创建账号</button>
+  <ion-buttons style="width: 70%;margin-left: 15%;margin-top: 2%">
+    <button ion-button block color="secondary" [disabled]="valid"
+            (click)="create(phone.value,pass.value,pass1.value,vcode.value)">创建账号</button>
   </ion-buttons>
-  <div>
-    {{result}}
-  </div>
 </ion-content>
