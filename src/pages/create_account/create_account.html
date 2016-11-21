@@ -8,15 +8,15 @@
 
 <ion-content>
   <ion-item padding>
-    <ion-label color="primary" floating >用户手机号码<span style="color: red">{{wrongNum}}</span></ion-label>
+    <ion-label color="primary" stacked >用户手机号码<span style="color: red">{{wrongNum}}</span></ion-label>
     <ion-input type="number" #phone (change)="check_valid(phone.value,pass.value,pass1.value)"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label color="primary" floating>密码</ion-label>
+    <ion-label color="primary" stacked>密码</ion-label>
     <ion-input type="password" #pass (change)="check_valid(phone.value,pass.value,pass1.value)"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label color="primary" floating >再次输入密码<span style="color: red">{{wrongPass}}</span></ion-label>
+    <ion-label color="primary" stacked >再次输入密码<span style="color: red">{{wrongPass}}</span></ion-label>
     <ion-input type="password" #pass1 (change)="check_valid(phone.value,pass.value,pass1.value)"></ion-input>
   </ion-item>
   <div text-center style="width: 80%;margin-left: 10%">
@@ -26,7 +26,7 @@
     <button ion-button color="danger" (click)="get_code(phone.value)">{{get_code_text}}</button>
   </div>
   <ion-item>
-    <ion-label color="primary" floating>验证码</ion-label>
+    <ion-label color="primary" stacked>验证码</ion-label>
     <ion-input type="number"  #vcode ></ion-input>
   </ion-item>
   <div text-center style="margin-top: 5%">

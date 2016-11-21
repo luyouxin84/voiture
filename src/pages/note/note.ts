@@ -31,9 +31,12 @@ export class NotePage implements OnInit{
          console.log(i.result[j]);
 
          for ( let k = 0; k<i.result[j].length;k++){
+           let time_transform= new Date(parseInt( i.result[j][k].memo_date )*1000);
+           console.log(time_transform);
            let detail:Result={
-              time:i.result[j][k].time,
-             context:i.result[j][k].context
+              time:time_transform.toString(),
+             context:i.result[j][k].context,
+             title:i.result[j][k].title
            };
            tt.push(detail);
          }

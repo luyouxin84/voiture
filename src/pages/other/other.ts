@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { leave } from '../leave/leave';
 import { shuoshuo } from '../shuoshuo/shuoshuo';
 import {add_baoche} from "../add_baoche/add_baoche";
-import {Http} from "@angular/http";
+import {http_basic_lib} from "../http_basic_lib";
 @Component({
   selector: 'page-other',
   templateUrl: 'other.html'
@@ -11,7 +11,7 @@ import {Http} from "@angular/http";
 export class OtherPage implements OnInit{
   public TotalMessage:string;
   list:detail[]=[];
-  constructor(public navCtrl: NavController,public http:Http) {
+  constructor(public navCtrl: NavController,public http:http_basic_lib) {
     this.TotalMessage = "共有 6 条消息";
   }
 
@@ -21,10 +21,10 @@ export class OtherPage implements OnInit{
   }
 
   public get_http_data( t:detail[]) {
-    this.http.get('http://www.shengyoudengwang.com/Service/Car/addressPrice.html')
+    this.http.http_service_post('addressPrice','driver_id=1')
       .subscribe( res =>
       {
-        let obj = res.json();
+        let obj = res;
         //判断数据获取
         if ( obj.code == '200'){
           t.splice(0);

@@ -24,6 +24,7 @@ export class relation_account{
           if ( code == '200'){
             localStorage.setItem( 'uid',res.result.uid);
             localStorage.setItem('driver_id',res.result.id);
+            localStorage.setItem('user_obj',JSON.stringify(res.result));
             location.reload();
           } else {
             alert('用户名和密码错误！'+ res.message);
@@ -41,8 +42,4 @@ export class relation_account{
   new_user(){
       this.navCTRL.push( create_account );
   }
-  passMd5(e:string){
-    console.log( Md5.hashStr(e));
-  }
-
 }

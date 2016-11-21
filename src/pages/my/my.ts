@@ -23,8 +23,6 @@ export class myPage {
   constructor(public navCtrl: NavController ,private screeninfo:Screen ) {
     this.TotalMessage = "没有记录";
     this.total = "1888.00 元";
-    this.win = new screen_info(screeninfo.getscreen().wid,this.screeninfo.getscreen().hei);
-    console.log( this.win.hei);
     }
   change(){
     this.navCtrl.push(demand_cash);
@@ -49,6 +47,10 @@ export class myPage {
     this.TotalMessage = "共有 " + e + " 条消息";
   }
   goto_cash_flow(  e:any ){
+    console.log(e);
     this.navCtrl.push(cash_flow);
+  }
+  get_total( total:any ){
+    this.total = total+'元';
   }
 }

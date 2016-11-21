@@ -14,6 +14,7 @@ export class http_basic_lib{
       .map ( res => res.json())
   }
   http_service_post ( url :string , param:string ):any{
+    console.log('使用post方法访问：'+ url + '参数为');
     console.log(param);
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');

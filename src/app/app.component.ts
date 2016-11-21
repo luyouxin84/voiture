@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { TabsPage } from '../pages/tabs/tabs';
+import {Splashscreen} from 'ionic-native';
+
 
 
 @Component({
@@ -15,6 +17,14 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
+      this.hideSplashScreen();
     });
+  }
+  hideSplashScreen() {
+    if( Splashscreen ) {
+      setTimeout(()=> {
+       Splashscreen.hide();
+      }, 100);
+    }
   }
 }
