@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {NavController} from "ionic-angular";
 import {create_account} from "../create_account/create_account";
-import { Md5 } from '../md5/md5';
+import { md5 } from '../md5';
 import {http_basic_lib} from "../http_basic_lib";
 
 
@@ -14,7 +14,7 @@ export class relation_account{
   constructor(public navCTRL:NavController,public post_login:http_basic_lib) {
   }
   login(id:string,pass:string){
-    pass = Md5.hashStr(pass).toString();
+    pass = md5(pass);
     let params = 'account='+id+'&password='+pass;
     this.post_login.http_service_post('carLogin',params)
       .subscribe(
@@ -24,7 +24,6 @@ export class relation_account{
           if ( code == '200'){
             localStorage.setItem( 'uid',res.result.uid);
             localStorage.setItem('driver_id',res.result.id);
-            localStorage.setItem('user_obj',JSON.stringify(res.result));
             location.reload();
           } else {
             alert('用户名和密码错误！'+ res.message);
@@ -42,4 +41,5 @@ export class relation_account{
   new_user(){
       this.navCTRL.push( create_account );
   }
+
 }
