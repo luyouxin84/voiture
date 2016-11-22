@@ -1,46 +1,36 @@
 import { Component ,OnInit} from '@angular/core';
-
 import { NavController } from 'ionic-angular';
-import { Http , Headers} from '@angular/http';
-import { data } from '../car_info/data';
-
+import {http_basic_lib} from "../http_basic_lib";
 
 @Component({
   templateUrl:"car_info.html",
   selector:"car_info"
 })
 export  class  car_info implements OnInit {
-  http:Http;
-  number:string;
   //mydata为获取的数据，info为操作的空对象
-  myDate:data;
   info :any= {} ;
-  constructor( public navCTRL:NavController , http:Http ) {
-    this.http = http;
+  constructor( public navCTRL:NavController , public http:http_basic_lib ) {
   }
 
   ngOnInit(): void {
-    this.http.get('http://www.shengyoudengwang.com/Service/Car/addCar.html')
+    let id = localStorage.getItem('driver_id');
+    this.http.http_service_post('driverCar','driver_id='+id)
       .subscribe( res => {
-        this.myDate = res.json();
-        console.log(this.myDate);
-        this.info.id = this.myDate.result.Result.id;
-        this.info.cartype_id = this.myDate.result.Result.cartype_id;
-        this.info.driver_id = this.myDate.result.Result.driver_id;
+        console.log(res);
+        let data = res.result.Result[0];
+        this.info.id = data.id;
+        this.info.cartype_id = data.cartype_id;
+        this.info.driver_id = data.driver_id;
         //图片地址只是测试，没有做具体的判断动作
-        this.info.picture1 =  this.myDate.result.Result.picture1;
-        this.info.picture2 = this.myDate.result.Result.picture2;
-        this.info.picture3 = this.myDate.result.Result.picture3;
-        this.info.number = this.myDate.result.Result.number;
-        this.info.color = this.myDate.result.Result.color;
-        this.info.checktime = this.myDate.result.Result.checktime;
+        this.info.picture1 =  data.picture1;
+        this.info.picture2 = data.picture2;
+        this.info.picture3 = data.picture3;
+        this.info.number = data.number;
+        this.info.color = data.color;
+        this.info.checktime = data.checktime;
       })
   }
   logForm() {
-    //表达提交
-    // console.log(this.info);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
     let params = 'id='+ this.info.id +'&' +
         'cartype_id='+ this.info.cartype_id + '&' +
         'driver_id='+ this.info.driver_id + '&' +
@@ -52,7 +42,7 @@ export  class  car_info implements OnInit {
         'checktime='+ this.info.checktime
       ;
 
-    this.http.post('http://www.shengyoudengwang.com/Service/Car/addCar.html',params,{headers:headers})
+    this.http.http_service_post('addCar',params)
       .subscribe( res => alert( res ));
   }
 }

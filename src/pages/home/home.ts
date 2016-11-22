@@ -69,7 +69,6 @@ export class HomePage implements OnInit{
      this.get_http_data();
   }
   temp(){
-    this.navCtrl.push(relation_account)
   }
   callNumber( number:string ){
     //拨号组件电脑调试不能，错误正常

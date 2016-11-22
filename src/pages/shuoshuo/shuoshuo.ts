@@ -3,12 +3,12 @@
  */
 import { Component,OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Http } from '@angular/http';
 import  { RootObject } from '../leave/data';
 import { Screen } from  '../get_screen_info';
 import { leave } from '../leave/leave';
 import { OtherPage as other } from '../other/other';
 import { write_shuoshuo} from '../write_shuoshuo/write_shuoshuo';
+import {http_basic_lib} from "../http_basic_lib";
 @Component({
   templateUrl:'shuoshuo.html',
   selector:'shuoshuo'
@@ -16,15 +16,15 @@ import { write_shuoshuo} from '../write_shuoshuo/write_shuoshuo';
 export class shuoshuo implements OnInit{
   public info:any={};
   public list:any = [];
-  constructor(public  navCtrl:NavController,public http:Http){
+  constructor(public  navCtrl:NavController,public http:http_basic_lib){
 
   }
 
   ngOnInit(): void {
     let temp:RootObject;
-    this.http.get('http://www.shengyoudengwang.com/Service/Car/ssList.html')
+    this.http.http_service_post('ssList','driver_id=1')
       .subscribe( res => {
-        temp = res.json();
+        temp = res;
         // 得到长度，网络延迟过高或许有bug
         let i = parseInt(temp.result.Total.count);
         console.log('内容长度'+i);
@@ -32,7 +32,7 @@ export class shuoshuo implements OnInit{
           this.info.id = temp.result.LeaveList[j].id;
           this.info.driver_id = temp.result.LeaveList[j].driver_id;
           //转换时间
-          let k = parseInt(temp.result.LeaveList[j].time);
+          let k = parseInt(temp.result.LeaveList[j].time)*1000;
           let t = new Screen().change_item(k);
           this.info.time = t;
           this.info.context = temp.result.LeaveList[j].context;

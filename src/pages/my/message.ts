@@ -27,11 +27,11 @@ export class message implements OnInit{
       .subscribe( res =>{
         console.log(res.result);
         for ( let key in res.result){
+          if ( key !='length' && key != 'Sum'){
           console.log(key);
           console.log(res.result[key][0]);
           let x = res.result[key][0];
-          if ( key !='length' || key != 'Sum'){
-            this.list.push(new bill_month(key,x.balance,x.Amount,x.billtime));
+          this.list.push(new bill_month(key,x.Amount,x.billtime,x.balance));
           }
         }
         console.log(this.list);
@@ -39,8 +39,8 @@ export class message implements OnInit{
         this.emit_total.emit(res.result.Sum);
       })
   }
-  godetail(){
-    this.emit_godetail.emit('xxxx');
+  godetail(e:any){
+    this.emit_godetail.emit( e );
   }
 }
 

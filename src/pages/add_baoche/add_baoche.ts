@@ -191,7 +191,6 @@ export class add_baoche implements OnInit{
   post(){
     if ( this.start_selected == false || this.end_selected == false || this.dayPrice==null || this.price==null ){
       console.log('不全');
-
     } else{
       console.log( this.start,this.end);
       let headers= new Headers();

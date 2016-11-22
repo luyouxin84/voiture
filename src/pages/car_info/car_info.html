@@ -49,16 +49,7 @@
         <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="info.checktime" name="checktime" text-center></ion-datetime>
       </ion-item>
     </div>
-    <div class="select_item" >
-      <ion-item>
-        <ion-label>车座</ion-label>
-        <ion-select [(ngModel)]="info.seat" name="seat" text-center>
-          <ion-option value="f" selected="true">7座</ion-option>
-          <ion-option value="m">5座</ion-option>
-          <ion-option value="m">9座</ion-option>
-        </ion-select>
-      </ion-item>
-    </div>
+
     <div style="padding:8%">
       <button ion-button color='danger' (click)="logForm()" block >保存</button>
     </div>

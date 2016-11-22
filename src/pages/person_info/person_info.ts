@@ -1,44 +1,44 @@
 import { Component , OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Http , Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { RootObject } from '../person_info/data';
+import {http_basic_lib} from "../http_basic_lib";
 
 @Component({
   templateUrl:"person_info.html",
   selector:"person_info"
 })
 export  class  person_info implements OnInit{
-  recevie_json_data: RootObject;
   info:any = {};
-  constructor(public navCTRL: NavController, public http:Http) {
-    this.http = http;
+  constructor(public navCTRL: NavController, public http:http_basic_lib) {
   }
   ngOnInit() {
-    this.http.get('http://www.shengyoudengwang.com/Service/Car/addDriver.html')
+    //获取用户driver_id
+    let id = localStorage.getItem('driver_id');
+    this.http.http_service_post('driverDetail','driver_id='+id )
       .subscribe(res => {
-        this.recevie_json_data = res.json();
-        console.log(this.recevie_json_data);
-        this.info.sex = this.recevie_json_data.result.Result.sex;
-        this.info.language = this.recevie_json_data.result.Result.language;
-        this.info.name = this.recevie_json_data.result.Result.name;
-        this.info.getLicenseTime = this.recevie_json_data.result.Result.getLicenseTime;
-        this.info.phone = this.recevie_json_data.result.Result.phone;
-        this.info.city = this.recevie_json_data.result.Result.city;
-        this.info.licenseNumber = this.recevie_json_data.result.Result.licenseNumber;
-        this.info.licenseType = this.recevie_json_data.result.Result.licenseType;
-        this.info.statue = this.recevie_json_data.result.Result.statue;
-        this.info.idCard = this.recevie_json_data.result.Result.idCard;
-        this.info.bankCard = this.recevie_json_data.result.Result.bankCard;
-        this.info.bankName = this.recevie_json_data.result.Result.bankName;
-        this.info.id = this.recevie_json_data.result.Result.id;
+        if( res.code === '200'){
+          let date = res.result.Result[0];
+          console.log( date );
+          this.info.sex = date.sex;
+          this.info.language = date.language;
+          this.info.name = date.name;
+          this.info.getLicenseTime = date.getLicenseTime;
+          this.info.phone = date.phone;
+          this.info.city = date.city;
+          this.info.licenseNumber = date.licenseNumber;
+          this.info.licenseType = date.licenseType;
+          this.info.statue = date.statue;
+          this.info.idCard = date.idCard;
+          this.info.bankCard = date.bankCard;
+          this.info.bankName = date.bankName;
+          this.info.id = date.id;
+        }else{
+          alert('没能获取用户数据'+ res.code + res.message);
+        }
     })
   }
   logForm(){
-    // console.log(this.info);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    //时间没有处理
+    //时间没有处理,数据有效性没有验证，
     var params = 'name='+ this.info.name +'&' +
       'sex='+ this.info.sex + '&' +
       'language='+ this.info.language + '&' +
@@ -53,7 +53,7 @@ export  class  person_info implements OnInit{
       'bankName='+ this.info.bankName + '&' +
       'id='+ this.info.id
       ;
-    this.http.post('http://www.shengyoudengwang.com/Service/Car/addDriver.html',params,{headers:headers})
+    this.http.http_service_post('http://www.shengyoudengwang.com/Service/Car/addDriver.html',params)
       .subscribe( res => console.log( res ));
   }
 }
