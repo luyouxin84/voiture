@@ -19,10 +19,13 @@
       </div>
     </div>
 
-    <div class="select_item">
-      <ion-item >
+    <div class="select_item" >
+      <ion-item>
         <ion-label>车型</ion-label>
-        <ion-input type="text" [(ngModel)]="info.cartype_id" name="cartype_id" text-center></ion-input>
+        <ion-select [(ngModel)]="info.cartype_id" name="cartype_id" (ionChange)="changecar()" okText="确定" cancelText="取消">
+          <ion-option value="" disabled selected>选择一个车型</ion-option>
+          <ion-option [value]="i.value" *ngFor=" let i of car">{{i.type}}</ion-option>
+        </ion-select>
       </ion-item>
     </div>
     <div class="select_item">

@@ -15,14 +15,17 @@
     <label>{{TotalMessage}}</label>
   </ion-toolbar>
   <show-message (emit)="recevie_data_long($event)" (emit_total)="get_total($event)" (emit_godetail)="goto_cash_flow($event)"></show-message>
-  <div style="width: 100%;font-size: 22px;font-weight: 500;padding-top: 10px;padding-right: 10%" >
-    <div style="float: right;color: red;font-size: 18px">{{total}}</div>
-    <div style="float: right;color: #666666;font-size: 18px">余额总计 : </div>
-  </div>
-  <div style="margin-top: 10%" padding-horizontal >
-    <button ion-button color="danger" style="font-weight: 600" block (click)="change()">申请提款</button>
-  </div>
-  <div style="margin-top: 10%;" padding-horizontal >
-    <button ion-button color="primary"  block (click)="logout()" style="font-weight: 600">退出登录</button>
-  </div>
+  <ion-footer>
+    <div style="width: 100%;font-size: 22px;font-weight: 500;padding-top: 10px;padding-right: 10%" >
+      <div style="float: right;color: red;font-size: 18px">{{total}}</div>
+      <div style="float: right;color: #666666;font-size: 18px">余额总计 : </div>
+    </div>
+    <div style="margin-top: 10%" padding-horizontal >
+      <button ion-button color="danger" style="font-weight: 600" block (click)="change()">申请提款</button>
+    </div>
+    <div style="margin-top: 5%;margin-bottom: 5%" padding-horizontal >
+      <button ion-button color="primary"  block (click)="logout()" style="font-weight: 600">退出登录</button>
+    </div>
+  </ion-footer>
+
 </ion-content>

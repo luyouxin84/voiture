@@ -1,28 +1,28 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      月账单
+      {{title_month}}月账单
     </ion-title>
   </ion-navbar>
   <ion-toolbar>
     <div style="display: flex;flex-direction: row">
       <div style="min-width: 49%">
-        <label>上月余额</label>
+        <label></label>
         <span></span>
       </div>
-      <div>
-        <label>本月余额</label>
-        <span></span>
+      <div style="color: #e13838;font-weight: 600">
+        <label>本月余额:</label>
+        <span>{{resultAmount}}</span>
       </div>
     </div>
     <div style="display: flex;flex-direction: row">
       <div style="min-width: 49%">
-        <label>本月进账</label>
-        <span></span>
+        <label>本月进账:</label>
+        <span>{{inAmount}}</span>
       </div>
       <div>
-        <label>本月提款</label>
-        <span></span>
+        <label>本月提款:</label>
+        <span>{{outAmount}}</span>
       </div>
     </div>
   </ion-toolbar>
@@ -30,14 +30,15 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor="let item of list">
       <div>
         <label>时间</label>
-        <span>钱</span>
+        <span>{{ item.billtime }}</span>
+        <span style="margin-left: 40%;font-size: 14px" [ngStyle]="item.isAdd=='1'?income:outcome">{{ item.isAdd=='0'?'出账':'进账'}}</span>
       </div>
       <div>
-        <label>名目</label>
-        <span>操作流水号</span>
+        <label>金额</label>
+        <span>{{ item.Amount }}</span>
       </div>
     </ion-item>
   </ion-list>

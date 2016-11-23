@@ -28,10 +28,25 @@ export class message implements OnInit{
         console.log(res.result);
         for ( let key in res.result){
           if ( key !='length' && key != 'Sum'){
-          console.log(key);
-          console.log(res.result[key][0]);
-          let x = res.result[key][0];
-          this.list.push(new bill_month(key,x.Amount,x.billtime,x.balance));
+          // console.log(key);
+          // console.log(res.result[key]);
+            //匹配正则
+            let time_year_test = /[0-9][0-9][0-9][0-9]/;
+            let o = key.match(time_year_test);
+            let time_month_test = /[0-9][0-9]/g;
+            let k = key.match(time_month_test);
+            console.log(o[0],k[2]);
+            let date = new Date( parseInt(o[0]),parseInt(k[2])-1,1 );
+            let date_transf = (date.getTime()/1000).toString();
+            console.log(date_transf);
+          let x : bill_month = {
+            time:key,
+            inTotal:res.result[key].inTotal,
+            outTotal:res.result[key].outTotal,
+            time_stampe:date_transf
+          };
+          console.log(x);
+          this.list.push(x);
           }
         }
         console.log(this.list);
@@ -44,17 +59,11 @@ export class message implements OnInit{
   }
 }
 
-export class bill_month{
+export interface bill_month{
   time:string;
-  balance:string;
-  Amount:string;
-  billtime:string;
-  constructor(time: string,Amount: string,billtime:string,balance?: string) {
-    this.time = time;
-    this.balance = balance;
-    this.Amount = Amount;
-    this.billtime = billtime;
-  }
+  inTotal:string;
+  outTotal:string;
+  time_stampe:string;
 }
 
 

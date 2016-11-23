@@ -10,7 +10,8 @@ export class http_basic_lib{
 
   }
   http_service_get( url:string ):any{
-    return this.http.get( url)
+    let _link = this.baseUrl+url
+    return this.http.get( _link )
       .map ( res => res.json())
   }
   http_service_post ( url :string , param:string ):any{

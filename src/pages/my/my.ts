@@ -47,8 +47,9 @@ export class myPage {
     this.TotalMessage = "共有 " + e + " 条消息";
   }
   goto_cash_flow(  e:any ){
-    console.log(e);
-    this.navCtrl.push(cash_flow);
+    this.navCtrl.push(cash_flow,{
+      month : e
+    });
   }
   get_total( total:any ){
     this.total = total+'元';

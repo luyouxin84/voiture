@@ -5,7 +5,6 @@ import {RootObject, List} from '../home/datatype';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { done_deal } from '../done_deal/done_deal';
-import {relation_account} from "../relation_account/relation_account";
 import {CallNumber} from 'ionic-native';
 import {http_basic_lib} from "../http_basic_lib";
 
