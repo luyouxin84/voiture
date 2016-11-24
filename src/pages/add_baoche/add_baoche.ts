@@ -1,5 +1,6 @@
 import {Component, OnInit,} from "@angular/core";
 import {Http, Headers} from "@angular/http";
+import {http_basic_lib} from "../http_basic_lib";
 
 @Component({
   templateUrl:'add_baoche.html',
@@ -186,7 +187,7 @@ export class add_baoche implements OnInit{
     this.end_selected = false;
   }
 
-  constructor(public http:Http) {
+  constructor(public http:Http , public _http:http_basic_lib) {
   }
   post(){
     if ( this.start_selected == false || this.end_selected == false || this.dayPrice==null || this.price==null ){
@@ -195,8 +196,10 @@ export class add_baoche implements OnInit{
       console.log( this.start,this.end);
       let headers= new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-      let params = 'driver_id=1'+ '&star='+this.start+'&end='+this.end+'&dayPrice='+this.dayPrice+'&price='+
-        this.price;
+      // let params = 'driver_id=1'+ '&start='+this.start+'&end='+this.end+'&dayPrice='+this.dayPrice+'&price='+
+      //   this.price;
+      let params = `driver_id=1&start${this.start}&end=${this.end}&dayPrice=${this.dayPrice}&price=${this.price}`;
+      console.log(params);
       this.http.post('http://www.shengyoudengwang.com/Service/Car/addressPriceAdd.html',params,{headers:headers})
         .subscribe( res =>
         {
