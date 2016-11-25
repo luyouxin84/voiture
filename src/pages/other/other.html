@@ -1,21 +1,21 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-        其他
+      其他
     </ion-title>
   </ion-navbar>
   <ion-toolbar style="background-color: #f6f6f6;border-top-width: 1px;border-bottom-width:1px;border-color: #d2d2d2;
   border-style:solid;border-left: none;border-right: none ">
-  <ion-grid>
-    <ion-row style="text-align: center">
-      <ion-col width-33 style="color: red">包车价</ion-col>
-      <ion-col width-33 (click)="gotoleave()">请假</ion-col>
-      <ion-col width-33 (click)="gotoshuoshuo()">说说</ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-grid>
+      <ion-row style="text-align: center">
+        <ion-col width-33 style="color: red">包车价</ion-col>
+        <ion-col width-33 (click)="gotoleave()">请假</ion-col>
+        <ion-col width-33 (click)="gotoshuoshuo()">说说</ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
-  <ion-toolbar >
-    <ion-icon name ="ios-volume-up"></ion-icon>
+  <ion-toolbar>
+    <ion-icon name="ios-volume-up"></ion-icon>
     <label>{{TotalMessage}}</label>
     <ion-buttons end>
       <button (click)="addNew()" ion-button light primery>添加新包车价格</button>
@@ -23,41 +23,45 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content>
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
       pullingText="Pull to refresh"
       refreshingSpinner="circles"
       refreshingText="更新数据..."
-      >
+    >
     </ion-refresher-content>
   </ion-refresher>
   <ion-list>
-  <ion-item *ngFor="let item of list" style="border-bottom: 1px solid #e0e0e0">
-    <div>
+    <ion-item-sliding  *ngFor="let item of list" >
+      <ion-item style="border-bottom: 1px solid #e0e0e0">
+        <div>
       <span>
         <img src="img/home_location_green.png" width="10px">
       </span>
-      <span style="color: #656565">
+          <span style="color: #656565">
        {{item.startAddress}}
       </span>
-    </div>
-    <div>
+        </div>
+        <div>
       <span>
         <img src="img/home_locaton_red.png" width="10px">
       </span>
-      <span style="color: #656565">
+          <span style="color: #656565">
         {{item.endAddress}}
       </span>
-    </div>
-
-    <div style="display: flex;align-items: flex-end;position: relative">
-      <span style="margin-left: 5%;font-size: 20px"><ion-icon name="logo-yen" style="font-size: 17px"></ion-icon>{{item.dayPrice}}</span>
-      <span style="color: #656565">/天</span>
-      <span style="font-size: 20px;position: absolute;right: 5%;color: red"><ion-icon name="logo-yen" style="font-size: 17px"></ion-icon>{{item.price}}</span>
-    </div>
-  </ion-item>
+        </div>
+        <div style="display: flex;align-items: flex-end;position: relative">
+          <span style="margin-left: 5%;font-size: 20px"><ion-icon name="logo-yen" style="font-size: 17px"></ion-icon>{{item.dayPrice}}</span>
+          <span style="color: #656565">/天</span>
+          <span style="font-size: 20px;position: absolute;right: 5%;color: red"><ion-icon name="logo-yen" style="font-size: 17px"></ion-icon>{{item.price}}</span>
+        </div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="del_item(item.id)"><ion-icon name="trash"></ion-icon>删除</button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 
 

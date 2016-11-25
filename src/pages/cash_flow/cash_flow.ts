@@ -35,15 +35,17 @@ export class cash_flow implements OnInit{
             console.log(tlist);
             for (let i of tlist){
               // console.log(i);
+              let k = new Date(parseInt(i.billtime)*1000);
               let temp:cash_flow_single = {
                 Amount:i.Amount,
-                billtime:new Date(i.billtime).toString(),
+                billtime: k.getFullYear().toString()+'年'+(k.getMonth()+1).toString()+'月'+(k.getDate()).toString()+'日'+
+                k.getHours().toString()+':'+ k.getMinutes().toString(),
                 isAdd:i.isAdd
               };
               this.list.push(temp);
             }
           }else{
-            console.log('未能获取数据')
+            alert('未能获取数据');
           }
         }
       )

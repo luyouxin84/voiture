@@ -33,7 +33,7 @@ export class OtherPage implements OnInit{
           this.TotalMessage = '共有 '+obj.result.List.length.toString()+' 条包车价格';
           for ( let i = 0; i < obj.result.List.length;i++){
             t.push( new detail(obj.result.List[i].startAddress,obj.result.List[i].endAddress,obj.result.List[i].dayPrice
-            ,obj.result.List[i].price));
+            ,obj.result.List[i].price,obj.result.List[i].id));
           }
         }else{
           console.log( '数据请求错误');
@@ -47,7 +47,11 @@ export class OtherPage implements OnInit{
       this.get_http_data( this.list );
       e.complete();
     }, 1000);
-
+  }
+  del_item(e:string){
+    let params = `id=${e}`;
+    this.http.http_service_post('delAddressPrice',params)
+      .subscribe( res => alert(res.code),error => alert(error),()=>this.get_http_data( this.list ));
   }
 
   gotoleave(){
@@ -55,9 +59,6 @@ export class OtherPage implements OnInit{
   }
   gotoshuoshuo(){
     this.navCtrl.push(shuoshuo);
-  }
-  gotodetail(){
-
   }
   addNew(){
     this.navCtrl.push(add_baoche);
@@ -69,11 +70,13 @@ export class detail{
   endAddress:string;
   dayPrice:string;
   price:string;
+  id:string;
 
-  constructor(startAddress: string, endAddress: string, dayPrice: string, price: string) {
+  constructor(startAddress: string, endAddress: string, dayPrice: string, price: string,id:string) {
     this.startAddress = startAddress;
     this.endAddress = endAddress;
     this.dayPrice = dayPrice;
     this.price = price;
+    this.id = id;
   }
 }

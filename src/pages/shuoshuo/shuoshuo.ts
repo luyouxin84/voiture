@@ -14,7 +14,6 @@ import {http_basic_lib} from "../http_basic_lib";
   selector:'shuoshuo'
 })
 export class shuoshuo implements OnInit{
-  public info:any={};
   public list:any = [];
   constructor(public  navCtrl:NavController,public http:http_basic_lib){
 
@@ -27,18 +26,18 @@ export class shuoshuo implements OnInit{
         temp = res;
         // 得到长度，网络延迟过高或许有bug
         let i = parseInt(temp.result.Total.count);
-        console.log('内容长度'+i);
         for ( let j=0 ; j<i;j++){
-          this.info.id = temp.result.LeaveList[j].id;
-          this.info.driver_id = temp.result.LeaveList[j].driver_id;
+          let target:any={};
+          target.id = temp.result.LeaveList[j].id;
+          target.driver_id = temp.result.LeaveList[j].driver_id;
           //转换时间
           let k = parseInt(temp.result.LeaveList[j].time)*1000;
           let t = new Screen().change_item(k);
-          this.info.time = t;
-          this.info.context = temp.result.LeaveList[j].context;
-          this.list.push(this.info);
+          target.time = t;
+          target.context = temp.result.LeaveList[j].context;
+          this.list.push(target);
         }
-        console.log( this.list );
+        // console.log( this.list );
       })
   }
   writeleave(){

@@ -18,11 +18,12 @@ export  class write_note{
     if ( this.date != null&& tit != null){
       //转制时间
       let dat = new Date( this.date ).getTime();
-      dat = dat/1000;
+      //转换时区
+      dat = (dat/1000)-28800;
       let params = 'driver_id=1'+'&title='+tit+'&memo_date='+ dat.toString() +'&context='+cont;
       this.http.http_service_post('memoAdd',params)
         .subscribe( res => {
-          console.log(res.json());
+          console.log(res);
           this.navCTRL.pop();
         })
     } else{

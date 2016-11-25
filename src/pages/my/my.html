@@ -9,13 +9,13 @@
   </ion-segment>
 </ion-header>
 
-<ion-content style="background-color: #f7f7f7">
+<ion-content style="background-color: white">
   <ion-toolbar class="subheader">
     <ion-icon name ="ios-megaphone-outline"></ion-icon>
     <label>{{TotalMessage}}</label>
   </ion-toolbar>
   <show-message (emit)="recevie_data_long($event)" (emit_total)="get_total($event)" (emit_godetail)="goto_cash_flow($event)"></show-message>
-  <ion-footer>
+  <ion-footer >
     <div style="width: 100%;font-size: 22px;font-weight: 500;padding-top: 10px;padding-right: 10%" >
       <div style="float: right;color: red;font-size: 18px">{{total}}</div>
       <div style="float: right;color: #666666;font-size: 18px">余额总计 : </div>

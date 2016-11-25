@@ -3,7 +3,6 @@
  */
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { screen_info } from  '../screen_info';
 import  {Screen } from  '../get_screen_info';
 import {person_info} from "../person_info/person_info";
 import {car_info} from "../car_info/car_info";
@@ -18,11 +17,9 @@ export class myPage {
    sort:string;
    TotalMessage:string;
    total:string;
-   win:screen_info;
-
   constructor(public navCtrl: NavController ,private screeninfo:Screen ) {
     this.TotalMessage = "没有记录";
-    this.total = "1888.00 元";
+    this.total = "0.00 元";
     }
   change(){
     this.navCtrl.push(demand_cash);
@@ -36,7 +33,6 @@ export class myPage {
   logout(){
     localStorage.removeItem('uid');
     if ( !localStorage.getItem('uid')){
-      console.log('out')
       location.reload()
     } else{
       console.log( 'out not run correct')

@@ -25,31 +25,25 @@ export class message implements OnInit{
     let params = 'driver_id=1';
     this.get_data.http_service_post('billList',params)
       .subscribe( res =>{
-        console.log(res.result);
+        // console.log(res.result);
         for ( let key in res.result){
           if ( key !='length' && key != 'Sum'){
-          // console.log(key);
-          // console.log(res.result[key]);
             //匹配正则
             let time_year_test = /[0-9][0-9][0-9][0-9]/;
             let o = key.match(time_year_test);
             let time_month_test = /[0-9][0-9]/g;
             let k = key.match(time_month_test);
-            console.log(o[0],k[2]);
             let date = new Date( parseInt(o[0]),parseInt(k[2])-1,1 );
             let date_transf = (date.getTime()/1000).toString();
-            console.log(date_transf);
           let x : bill_month = {
             time:key,
             inTotal:res.result[key].inTotal,
             outTotal:res.result[key].outTotal,
             time_stampe:date_transf
           };
-          console.log(x);
           this.list.push(x);
           }
         }
-        console.log(this.list);
         this.emit.emit(res.result.length);
         this.emit_total.emit(res.result.Sum);
       })

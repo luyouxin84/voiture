@@ -31,10 +31,10 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of list">
-      <div>
+      <div style="position: relative">
         <label>时间</label>
         <span>{{ item.billtime }}</span>
-        <span style="margin-left: 40%;font-size: 14px" [ngStyle]="item.isAdd=='1'?income:outcome">{{ item.isAdd=='0'?'出账':'进账'}}</span>
+        <span style="position: absolute;right: 5%;font-size: 14px" [ngStyle]="item.isAdd=='1'?income:outcome">{{ item.isAdd=='0'?'出账':'进账'}}</span>
       </div>
       <div>
         <label>金额</label>

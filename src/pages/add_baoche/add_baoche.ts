@@ -193,17 +193,12 @@ export class add_baoche implements OnInit{
     if ( this.start_selected == false || this.end_selected == false || this.dayPrice==null || this.price==null ){
       console.log('不全');
     } else{
-      console.log( this.start,this.end);
-      let headers= new Headers();
-      headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-      // let params = 'driver_id=1'+ '&start='+this.start+'&end='+this.end+'&dayPrice='+this.dayPrice+'&price='+
-      //   this.price;
-      let params = `driver_id=1&start${this.start}&end=${this.end}&dayPrice=${this.dayPrice}&price=${this.price}`;
+      let params = `driver_id=1&start=${this.start}&end=${this.end}&dayPrice=${this.dayPrice}&price=${this.price}`;
       console.log(params);
-      this.http.post('http://www.shengyoudengwang.com/Service/Car/addressPriceAdd.html',params,{headers:headers})
+      this._http.http_service_post('addressPriceAdd',params)
         .subscribe( res =>
         {
-          console.log( res.json());
+          console.log( res.message);
         })
     }
   }

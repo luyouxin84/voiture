@@ -10,7 +10,14 @@
 </ion-header>
 
 <ion-content  style="background-color: #f7f7f7">
-
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="更新数据...">
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-list>
     <div *ngFor="let item of list" >
       <ion-item-divider *ngIf=" item.date_of_day != 'length'? true:false">

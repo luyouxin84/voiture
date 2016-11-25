@@ -37,8 +37,8 @@ export  class  car_info implements OnInit {
         if ( res.code ==='200') {
           console.log(res);
           let data = res.result.Result[0];
-          this.info.id = data.id;
-          this.info.cartype_id = data.cartype_id;
+          this.info.id = data.ZcCarId;
+          this.info.cartype_id = data.ZcCarTypeId;
           this.info.driver_id = data.driver_id;
           //图片地址只是测试，没有做具体的判断动作
           this.info.picture1 =  data.picture1;
