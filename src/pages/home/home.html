@@ -24,8 +24,8 @@
   <div style="width: 90%;background-color:white;border-radius: 2%;margin-top: 10px;margin-left: 5%;overflow: hidden;position: relative"
       *ngFor="let item of joblist">
     <div class="fullwidth" style="color: red;padding-left: 3%;font-size: 17px;
-      padding-top: 7px;padding-bottom:2px;border-bottom: 1px solid #e5e5e5">{{item.startingTime}}</div>
-    <div style="position: absolute;right: 5%;top: 3%;color: #8c8c8c;font-size: 17px" *ngIf="item.UserStatus === '开始'" (click)="cancel(item.id)">
+      padding-top: 9px;padding-bottom:2px;border-bottom: 1px solid #e5e5e5">{{item.startingTime}}</div>
+    <div style="position: absolute;right: 5%;top: 9px;color: #8c8c8c;font-size: 17px" *ngIf="item.UserStatus === '开始'" (click)="cancel(item.id)">
       取消
     </div>
     <div style="display: inline-block;width: 100%;padding-left: 3%;margin-top: 1%">
@@ -39,7 +39,7 @@
       <span style="font-size: 17px">{{item.endPoint}}</span>
     </div>
    <ion-grid style="padding: 0;background-color: #f7f7f7;margin-top: 1%">
-     <ion-row style="padding: 6px;height: 58px">
+     <ion-row style="padding: 8px;height: 62px">
        <ion-col width-20 text-center><img src="img/face.png" width="70%"></ion-col>
        <ion-col width-60 >
             <div style="height: 50%">

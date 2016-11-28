@@ -1,4 +1,4 @@
-import { Component ,OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {write_note} from "../write_note/write_note";
 import {day, Result} from "./job";
@@ -8,7 +8,7 @@ import {http_basic_lib} from "../http_basic_lib";
   selector: 'page-about',
   templateUrl: 'note.html'
 })
-export class NotePage implements OnInit{
+export class NotePage{
 
   public list:day[]=[];
   constructor(public navCtrl: NavController,public http:http_basic_lib) {
@@ -24,7 +24,8 @@ export class NotePage implements OnInit{
     }, 2000);
   }
   get_http_data(){
-    this.http.http_service_post('memoList','driver_id=1')
+    let d_id = localStorage.getItem('driver_id');
+    this.http.http_service_post('memoList','driver_id=' + d_id)
       .subscribe( res =>
       {
         let i = res;
@@ -45,8 +46,8 @@ export class NotePage implements OnInit{
               };
               tt.push(detail);
             }
-            console.log(j);
-            console.log(tt);
+            // console.log(j);
+            // console.log(tt);
             let t = new day(j,tt);
             this.list.push(t);
           }
@@ -55,7 +56,9 @@ export class NotePage implements OnInit{
       })
   }
 
-  ngOnInit(){
+  //ws不能正确识别ionic生命周期，不过使用起来正常
+  ionViewWillEnter(){
+    console.log('进入页面后初始化.....');
     this.list.splice(0);
     this.get_http_data();
   }

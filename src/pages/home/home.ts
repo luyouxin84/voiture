@@ -2,8 +2,6 @@ import { Component ,OnInit} from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 import {RootObject, List} from '../home/datatype';
-import {Http, Headers} from '@angular/http';
-import 'rxjs/add/operator/map';
 import { done_deal } from '../done_deal/done_deal';
 import {CallNumber} from 'ionic-native';
 import {http_basic_lib} from "../http_basic_lib";
@@ -13,10 +11,8 @@ import {http_basic_lib} from "../http_basic_lib";
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit{
-  switchFunction:string;
   joblist:List[]=[];
   http_result:RootObject;
-  http:Http;
   statue_0:any={
     'background-color': '#97ce68',
     'color': 'white'
@@ -25,8 +21,7 @@ export class HomePage implements OnInit{
     'background-color': '#f01414',
     'color': 'white'
   };
-  constructor(public navCtrl: NavController , http:Http ,private get_data:http_basic_lib) {
-    this.http = http;
+  constructor(public navCtrl: NavController ,private get_data:http_basic_lib) {
   }
   load_done_order(){
     this.navCtrl.push( done_deal);
@@ -61,7 +56,10 @@ export class HomePage implements OnInit{
                   {
                     alert('数据请求失败');
                   }
-                  }
+                  },
+      error => {
+          console.log(error);
+      }
                 );
   }
    ngOnInit(): void {
@@ -75,19 +73,17 @@ export class HomePage implements OnInit{
       .then(() => console.log('Launched dialer!'))
       .catch(() => console.log('Error launching dialer'));
   }
-  post_data(link:string,parmas:string){
+  post_data(api:string,parmas:string){
     console.log(parmas);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    this.http.post(link,parmas,{headers:headers})
+    this.get_data.http_service_post(api,parmas)
       .subscribe(
-        res => alert ( res.json().message)
+        res => alert ( res.message)
       )
   }
   cancel(e:any){
-    this.post_data('http://www.shengyoudengwang.com/Service/Car/cancelClick.html','driver_id=1&id='+e)
+    this.post_data('cancelClick','driver_id=1&id='+e)
   }
   change_status(e:any){
-    this.post_data('http://www.shengyoudengwang.com/Service/Car/receiveClick.html','driver_id=1&id='+e);
+    this.post_data('receiveClick','driver_id=1&id='+e);
   }
 }
